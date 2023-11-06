@@ -1,0 +1,46 @@
+(1
+ 'skuter'
+ 'https://www.avito.ru/rostovskaya_oblast/mototsikly_i_mototehnika/mopedy_i_skutery-ASgBAgICAUQ82gE?cd=1&f=ASgBAgECAUQ82gEBRcaaDBd7ImZyb20iOjIwMDAsInRvIjo2MDAwfQ&q=%D1%81%D0%BA%D1%83%D1%82%D0%B5%D1%80'
+ 1
+ 1
+ 1
+ 1
+ ''
+ ''
+ ''
+ ''
+ ''
+ ''
+ ''
+ '')
+(2
+ 'E-MU 1616m'
+ 'https://www.avito.ru/all/tovary_dlya_kompyutera?q=E-MU+1616m&s=1'
+ 1
+ 1
+ 1
+ 1
+ ''
+ ''
+ ''
+ ''
+ ''
+ ''
+ ''
+ '')
+(4
+ 'NVME'
+ 'https://www.avito.ru/rostovskaya_oblast?f=ASgCAgECAUXGmgwXeyJmcm9tIjoxNTAwLCJ0byI6MjMwMH0&q=nvme+%21256'
+ 1
+ None
+ None
+ None
+ ''
+ ''
+ ''
+ ''
+ ''
+ ''
+ ''
+ '')
+

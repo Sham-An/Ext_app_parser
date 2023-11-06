@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>755</width>
+    <height>634</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>740</width>
+    <height>580</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QTabWidget" name="tabWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>0</y>
+      <width>731</width>
+      <height>581</height>
+     </rect>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">text-align: left;
+css
+QLineEdit#urlLineEdit {
+  padding: 2px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #62a6ff;
+  color: #000;
+  text-align: left;
+}
+</string>
+    </property>
+    <property name="tabPosition">
+     <enum>QTabWidget::North</enum>
+    </property>
+    <widget class="QWidget" name="tab">
+     <attribute name="title">
+      <string>Tab 1</string>
+     </attribute>
+     <widget class="QLabel" name="URL">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>31</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="text">
+       <string>URL</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="urlLineEdit">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>10</y>
+        <width>361</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 75 9pt &quot;Bitstream Charter&quot;;
+text-align: left;
+css
+QLineEdit#urlLineEdit {
+  padding: 2px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: rgb(255, 49, 97);
+  color: #000;
+  font: 75 9pt &quot;Bitstream Charter&quot;;
+  text-align: left;
+}
+</string>
+      </property>
+      <property name="text">
+       <string>https://www.avito.ru/rostovskaya_oblast_aksay/tovary_dlya_kompyutera/komplektuyuschie-ASgBAgICAUTGB~pm?f=ASgBAgECAUTGB~pmAUXGmgwXeyJmcm9tIjoxMDAwLCJ0b</string>
+      </property>
+      <property name="maxLength">
+       <number>150</number>
+      </property>
+      <property name="cursorPosition">
+       <number>1</number>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="button1">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>260</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Button 1</string>
+      </property>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>40</y>
+        <width>701</width>
+        <height>144</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QLabel" name="slug_Scheme">
+         <property name="text">
+          <string>slug_Scheme</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="Path_parts">
+         <property name="text">
+          <string>Path_parts</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="Parsed_Query">
+         <property name="text">
+          <string>Parsed_Query</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QListWidget" name="list_Query"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QTableWidget" name="table_Query">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>190</y>
+        <width>701</width>
+        <height>61</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QTableWidget" name="table_Task">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>290</y>
+        <width>701</width>
+        <height>71</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Get_Task">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>490</y>
+        <width>94</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Get_Task</string>
+      </property>
+     </widget>
+     <widget class="QTableView" name="View_Task">
+      <property name="geometry">
+       <rect>
+        <x>15</x>
+        <y>370</y>
+        <width>701</width>
+        <height>91</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_2">
+     <attribute name="title">
+      <string>Tab 2</string>
+     </attribute>
+     <widget class="QLabel" name="label2">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>10</y>
+        <width>141</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Tab 2 Label</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit1">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>30</y>
+        <width>611</width>
+        <height>20</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>755</width>
+     <height>23</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

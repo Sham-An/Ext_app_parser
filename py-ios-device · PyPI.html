@@ -1,0 +1,3649 @@
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="ru" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="defaultLanguage" content="en">
+    <meta name="availableLanguages" content="en, es, fr, ja, pt_BR, uk, el, de, zh_Hans, zh_Hant, ru, he, eo">
+
+    
+
+    <title>py-ios-device · PyPI</title>
+    <meta name="description" content="Get ios data and operate ios devices">
+
+    <link rel="stylesheet" href="/static/css/warehouse-ltr.076a6621.css">
+    <link rel="stylesheet" href="/static/css/fontawesome.b50b476c.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+3:400,400italic,600,600italic,700,700italic%7CSource+Code+Pro:500">
+    <noscript>
+      <link rel="stylesheet" href="/static/css/noscript.0673c9ea.css">
+    </noscript>
+
+    
+
+    <link rel="icon" href="/static/images/favicon.35549fe8.ico" type="image/x-icon">
+
+    <link rel="alternate" type="application/rss+xml" title="RSS: 40 последних обновлений" href="/rss/updates.xml">
+    <link rel="alternate" type="application/rss+xml" title="RSS: 40 новейших пакетов" href="/rss/packages.xml">
+    <link rel="alternate" type="application/rss+xml" title="RSS: последние выпуски проекта py-ios-device" href="/rss/project/py-ios-device/releases.xml">
+    
+    <link rel="canonical" href="https://pypi.org/project/py-ios-device/">
+    
+
+    <meta property="og:url" content="https://pypi.org/project/py-ios-device/">
+    <meta property="og:site_name" content="PyPI">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://pypi.org/static/images/twitter.abaf4b19.webp">
+    <meta property="og:title" content="py-ios-device">
+    <meta property="og:description" content="Get ios data and operate ios devices">
+    
+
+
+
+    <link rel="search" type="application/opensearchdescription+xml" title="PyPI" href="/opensearch.xml">
+
+    
+    <script async
+            data-ga-id="UA-55961911-1"
+            data-ga4-id="G-RW7D75DF8V"
+            
+            src="/static/js/warehouse.c431b9ad.js">
+    </script>
+    
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  },
+};
+</script>
+<script async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-svg.js"
+  integrity="sha256-1CldwzdEg2k1wTmf7s5RWVd7NMXI/7nxxjJM2C4DqII="
+  crossorigin="anonymous"
+></script>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-55961911-1"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RW7D75DF8V"></script>
+    <script defer src="https://www.fastly-insights.com/insights.js?k=6a52360a-f306-421e-8ed5-7417d0d4a4e9&dnt=true"></script>
+    <script async
+        src="https://media.ethicalads.io/media/client/v1.4.0/ethicalads.min.js"
+        integrity="sha256-U3hKDidudIaxBDEzwGJApJgPEf2mWk6cfMWghrAa6i0= sha384-UcmsCqcNRSLW/dV3Lo1oCi2/VaurXbib6p4HyUEOeIa/4OpsrnucrugAefzVZJfI sha512-q4t1L4xEjGV2R4hzqCa41P8jrgFUS8xTb8rdNv4FGvw7FpydVj/kkxBJHOiaoxHa8olCcx1Slk9K+3sNbsM4ug=="
+        crossorigin="anonymous"
+    ></script>
+
+    
+  </head>
+
+  <body data-controller="viewport-toggle">
+    
+
+    <!-- Accessibility: this link should always be the first piece of content inside the body-->
+    <a href="#content" class="skip-to-content">Перейти к основному содержимому</a>
+
+    <button type="button" class="button button--primary button--switch-to-mobile hidden" data-viewport-toggle-target="switchToMobile" data-action="viewport-toggle#switchToMobile">
+      Переключиться на мобильную версию
+    </button>
+
+    <div id="sticky-notifications" class="stick-to-top js-stick-to-top">
+      <!-- Add browser warning. Will show for ie9 and below -->
+      <!--[if IE]>
+      <div class="notification-bar notification-bar--warning" role="status">
+        <span class="notification-bar__icon">
+          <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+          <span class="sr-only">Предупреждение</span>
+        </span>
+        <span class="notification-bar__message">Вы используете неподдерживаемый браузер, обновите его до более новой версии.</span>
+      </div>
+      <![endif]-->
+      
+      <noscript>
+      <div class="notification-bar notification-bar--warning" role="status">
+        
+        <span class="notification-bar__icon">
+          <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+          <span class="sr-only">Предупреждение</span>
+        </span>
+        <span class="notification-bar__message">Некоторые функции могут не работать без JavaScript. Пожалуйста, попробуйте включить его, если у вас возникнут проблемы.</span>
+      </div>
+      </noscript>
+
+      
+        <div data-html-include="/_includes/notification-banners/">
+        </div>
+      
+    </div>
+
+    
+      <div data-html-include="/_includes/flash-messages/">
+      </div>
+    
+
+    
+
+    
+      <div data-html-include="/_includes/session-notifications/">
+      </div>
+    
+
+    <header class="site-header ">
+      <div class="site-container">
+        <div class="split-layout">
+          
+          <div class="split-layout">
+            <div>
+              <a class="site-header__logo" href="/">
+                <img alt="PyPI" src="/static/images/logo-small.2a411bc6.svg">
+              </a>
+            </div>
+
+            <form class="search-form search-form--primary" action="/search/" role="search">
+              <label for="search" class="sr-only">Поиск по PyPI</label>
+              <input id="search" class="search-form__search" type="text" name="q" placeholder="Поиск проектов" value="" autocomplete="off" autocapitalize="off" spellcheck="false" data-controller="search-focus" data-action="keydown@window->search-focus#focusSearchField" data-search-focus-target="searchField">
+              
+              <button type="submit" class="search-form__button">
+                <i class="fa fa-search" aria-hidden="true"></i>
+                <span class="sr-only">Поиск</span>
+              </button>
+            </form>
+          </div>
+          
+
+          <div data-html-include="/_includes/current-user-indicator/">
+            <div id="user-indicator" class="horizontal-menu horizontal-menu--light horizontal-menu--tall">
+  <nav class="horizontal-menu horizontal-menu--light horizontal-menu--tall hide-on-tablet" aria-label="Основная навигация">
+    <ul>
+      <li class="horizontal-menu__item"><a href="/help/" class="horizontal-menu__link">Помощь</a></li>
+      <li class="horizontal-menu__item"><a href="/sponsors/" class="horizontal-menu__link">Спонсоры</a></li>
+      <li class="horizontal-menu__item"><a href="/account/login/" class="horizontal-menu__link">Войти</a></li>
+      <li class="horizontal-menu__item"><a href="/account/register/" class="horizontal-menu__link">Зарегистрироваться</a></li>
+    </ul>
+  </nav>
+  <nav class="dropdown dropdown--on-menu hidden show-on-tablet" aria-label="Основная навигация">
+    <button type="button" class="horizontal-menu__link dropdown__trigger" aria-haspopup="true" aria-expanded="false" aria-label="Показать меню">
+      Меню
+      <span class="dropdown__trigger-caret">
+        <i class="fa fa-caret-down" aria-hidden="true"></i>
+      </span>
+    </button>
+    <ul class="dropdown__content" aria-hidden="true" aria-label="Главное меню">
+      <li><a class="dropdown__link" href="/help/">Помощь</a></li>
+      <li><a class="dropdown__link" href="/sponsors/">Спонсоры</a></li>
+      <li><a class="dropdown__link" href="/account/login/">Войти</a></li>
+      <li><a class="dropdown__link" href="/account/register/">Зарегистрироваться</a></li>
+    </ul>
+  </nav>
+</div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    
+    <div class="mobile-search">
+      <form class="search-form search-form--fullwidth" action="/search/" role="search">
+        <label for="mobile-search" class="sr-only">Поиск по PyPI</label>
+        <input id="mobile-search" class="search-form__search" type="text" name="q" placeholder="Поиск проектов" value="" autocomplete="off" autocapitalize="off" spellcheck="false">
+        
+        <button type="submit" class="search-form__button">
+          <i class="fa fa-search" aria-hidden="true"></i>
+          <span class="sr-only">Поиск</span>
+        </button>
+      </form>
+    </div>
+    
+
+    <main id="content">
+      
+
+<div class="hidden"
+  data-controller="github-repo-stats"
+  data-github-repo-stats-github-repo-info-outlet=".github-repo-info"
+  data-github-repo-stats-url-value="https://api.github.com/repos/YueChen-C/py-ios-device"
+  data-github-repo-stats-issue-url-value="https://api.github.com/search/issues?q=repo:YueChen-C/py-ios-device+type:issue+state:open&amp;per_page=1">
+</div>
+
+
+<div class="banner">
+  <div class="package-header">
+    <div class="package-header__left">
+      <h1 class="package-header__name">
+        py-ios-device 2.3.35
+      </h1>
+
+      
+      <div data-controller="clipboard">
+        <p class="package-header__pip-instructions">
+          <span id="pip-command" data-clipboard-target="source">pip install py-ios-device</span>
+          <button type="button" class="copy-tooltip copy-tooltip-s" data-action="clipboard#copy" data-clipboard-target="tooltip" data-clipboard-tooltip-value="Скопировать в буфер обмена">
+            <i class="fa fa-copy" aria-hidden="true"></i>
+            <span class="sr-only">Скопировать инструкции PIP</span>
+          </button>
+        </p>
+      </div>
+      
+    </div>
+
+    <div class="package-header__right">
+    
+      
+      <a class="status-badge status-badge--good" href="/project/py-ios-device/">
+        <span>Последняя версия</span>
+      </a>
+      
+    
+      <p class="package-header__date">
+        Выпущен: <time datetime="2023-09-08T11:09:24+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  8 сент. 2023 г.
+</time>
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="horizontal-section horizontal-section--grey horizontal-section--thin">
+  <div class="site-container">
+<div data-html-include="/_includes/administer-project-include/py-ios-device">
+</div>
+    <div class="split-layout split-layout--middle package-description">
+    
+      <p class="package-description__summary">Get ios data and operate ios devices</p>
+    
+    <div data-html-include="/_includes/edit-project-button/py-ios-device">
+    </div>
+    </div>
+  </div>
+</div>
+
+<div data-controller="project-tabs">
+  <div class="tabs-container">
+    <div class="vertical-tabs">
+      <div class="vertical-tabs__tabs">
+        <div class="sidebar-section">
+          <h3 class="sidebar-section__title">Навигация</h3>
+          <nav aria-label="Навигация для проекта py-ios-device">
+            <ul class="vertical-tabs__list" role="tablist">
+              <li role="tab">
+                <a id="description-tab" href="#description" data-project-tabs-target="tab" data-action="project-tabs#onTabClick" class="vertical-tabs__tab vertical-tabs__tab--with-icon vertical-tabs__tab--is-active" aria-selected="true" aria-label="Описание проекта. Фокус будет перенесён на описание.">
+                  <i class="fa fa-align-left" aria-hidden="true"></i>
+                  Описание проекта
+                </a>
+              </li>
+              <li role="tab">
+                <a id="history-tab" href="#history" data-project-tabs-target="tab" data-action="project-tabs#onTabClick" class="vertical-tabs__tab vertical-tabs__tab--with-icon" aria-label="История выпусков. Фокус будет перенесён на панель истории.">
+                  <i class="fa fa-history" aria-hidden="true"></i>
+                  История выпусков
+                </a>
+              </li>
+              
+              <li role="tab">
+                <a id="files-tab" href="#files" data-project-tabs-target="tab" data-action="project-tabs#onTabClick" class="vertical-tabs__tab vertical-tabs__tab--with-icon" aria-label="Загрузка файлов. Фокус будет перенесён на файлы проекта.">
+                  <i class="fa fa-download" aria-hidden="true"></i>
+                  Загрузка файлов
+                </a>
+              </li>
+              
+            </ul>
+          </nav>
+        </div>
+        
+<div class="sidebar-section">
+  <h3 class="sidebar-section__title">Ссылки проекта</h3>
+  <ul class="vertical-tabs__list">
+    
+    
+    <li>
+      <a class="vertical-tabs__tab vertical-tabs__tab--with-icon vertical-tabs__tab--condensed" href="https://github.com/YueChen-C/py-ios-device" rel="nofollow">
+        
+
+
+  
+
+
+<i class="fas fa-home" aria-hidden="true"></i>Homepage
+      </a>
+    </li>
+    
+    
+  </ul>
+</div>
+
+
+<div class="sidebar-section">
+  <h3 class="sidebar-section__title">Статистика</h3>
+  
+  <div class="hidden github-repo-info" data-controller="github-repo-info">
+    Статистика GitHub:
+    <ul class="vertical-tabs__list">
+      <li>
+        <a class="vertical-tabs__tab vertical-tabs__tab--with-icon vertical-tabs__tab--condensed"
+           data-github-repo-info-target="stargazersUrl" rel="noopener">
+          <i class="fa fa-star" aria-hidden="true"></i>
+          <strong>Звёзд:</strong>
+          <span data-github-repo-info-target="stargazersCount"></span>
+        </a>
+      </li>
+      <li>
+        <a class="vertical-tabs__tab vertical-tabs__tab--with-icon vertical-tabs__tab--condensed"
+           data-github-repo-info-target="forksUrl" rel="noopener">
+          <i class="fa fa-code-branch" aria-hidden="true"></i>
+          <strong>Форков:</strong>
+          <span data-github-repo-info-target="forksCount"></span>
+        </a>
+      </li>
+      <li>
+        <a class="vertical-tabs__tab vertical-tabs__tab--with-icon vertical-tabs__tab--condensed"
+           data-github-repo-info-target="openIssuesUrl" rel="noopener">
+          <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+          <strong>Open issues:</strong>
+          <span data-github-repo-info-target="openIssuesCount"></span>
+        </a>
+      </li>
+      <li>
+        <a class="vertical-tabs__tab vertical-tabs__tab--with-icon vertical-tabs__tab--condensed"
+           data-github-repo-info-target="openPRsUrl" rel="noopener">
+          <i class="fa fa-code-pull-request" aria-hidden="true"></i>
+          <strong>Open PRs:</strong>
+          <span data-github-repo-info-target="openPRsCount"></span>
+        </a>
+      </li>
+    </ul>
+  </div>
+  
+  <p>
+    Смотрите статистику этого проекта на <a href="https://libraries.io/pypi/py-ios-device" title="Внешняя ссылка" target="_blank" rel="noopener">Libraries.io</a> или в <a href="https://packaging.python.org/guides/analyzing-pypi-package-downloads/" target="_blank" rel="noopener">нашем общедоступном наборе данных на Google BigQuery</a>
+  </p>
+</div>
+
+
+<div class="sidebar-section">
+  <h3 class="sidebar-section__title">Метаданные</h3>
+  
+  
+    <p><strong>Автор:</strong> <a href="mailto:cpjsf@163.com">chenpeijie</a></p>
+  
+  
+    <p><strong>Сопровождающий:</strong> chenpeijie</p>
+  
+  
+  
+  <p>
+    <strong>Требует:</strong> Python &gt;=3.7
+  </p>
+  
+</div>
+
+
+<div class="sidebar-section">
+  
+  
+    <h3 class="sidebar-section__title">Сопровождающие</h3>
+    
+      
+      <span class="sidebar-section__maintainer">
+        <a href="/user/chenpeijie/" aria-label="chenpeijie">
+          <span class="sidebar-section__user-gravatar">
+            <img src="https://pypi-camo.global.ssl.fastly.net/d5ad45b02828365c0d31a89b5da20d412e77399a/68747470733a2f2f7365637572652e67726176617461722e636f6d2f6176617461722f37396333383739303661343039653230373433643765663730653439356330343f73697a653d3530" height="50" width="50" alt="Аватар для chenpeijie из gravatar.com" title="Аватар для chenpeijie из gravatar.com">
+          </span>
+          <span class="sidebar-section__user-gravatar-text">
+            chenpeijie
+          </span>
+        </a>
+      </span>
+    
+      
+      <span class="sidebar-section__maintainer">
+        <a href="/user/xiaochao/" aria-label="xiaochao">
+          <span class="sidebar-section__user-gravatar">
+            <img src="https://pypi-camo.global.ssl.fastly.net/a3c924911526331db42c398fe7e618317cb29937/68747470733a2f2f7365637572652e67726176617461722e636f6d2f6176617461722f30313863613935653330633735343033643337653331366431323736613134643f73697a653d3530" height="50" width="50" alt="Аватар для xiaochao из gravatar.com" title="Аватар для xiaochao из gravatar.com">
+          </span>
+          <span class="sidebar-section__user-gravatar-text">
+            xiaochao
+          </span>
+        </a>
+      </span>
+    
+  
+</div>
+
+
+<div class="sidebar-section">
+  <h3 class="sidebar-section__title">Классификаторы</h3>
+  <ul class="sidebar-section__classifiers">
+    
+    <li>
+      <strong>Operating System</strong>
+      <ul>
+        
+        <li>
+          <a href="/search/?c=Operating+System+%3A%3A+OS+Independent">
+            OS Independent
+          </a>
+        </li>
+        
+      </ul>
+    </li>
+    
+    <li>
+      <strong>Programming Language</strong>
+      <ul>
+        
+        <li>
+          <a href="/search/?c=Programming+Language+%3A%3A+Python+%3A%3A+3">
+            Python :: 3
+          </a>
+        </li>
+        
+      </ul>
+    </li>
+    
+  </ul>
+</div>
+
+        
+        
+<div class="sidebar-section" data-ea-publisher="psf" data-ea-type="psf" data-ea-keywords="pypi-sidebar"></div>
+
+
+      </div>
+      <div class="vertical-tabs__panel">
+        <!-- mobile menu -->
+        <nav aria-label="Навигация для проекта py-ios-device">
+          <ul class="vertical-tabs__list" role="tablist">
+            <li role="tab">
+              <a id="mobile-description-tab" href="#description" data-project-tabs-target="mobileTab" data-action="project-tabs#onTabClick" class="vertical-tabs__tab vertical-tabs__tab--with-icon vertical-tabs__tab--mobile vertical-tabs__tab--no-top-border vertical-tabs__tab--is-active" aria-selected="true" aria-label="Описание проекта. Фокус будет перенесён на описание.">
+                <i class="fa fa-align-left" aria-hidden="true"></i>
+                Описание проекта
+              </a>
+            </li>
+            <li role="tab">
+              <a id="mobile-data-tab" href="#data" data-project-tabs-target="mobileTab" data-action="project-tabs#onTabClick" class="vertical-tabs__tab vertical-tabs__tab--with-icon vertical-tabs__tab--mobile" aria-label="Подробности проекта. Фокус будет перенесён на подробную информацию о проекте.">
+                <i class="fa fa-info-circle" aria-hidden="true"></i>
+                Подробности проекта
+              </a>
+            </li>
+            <li role="tab">
+              <a id="mobile-history-tab" href="#history" data-project-tabs-target="mobileTab" data-action="project-tabs#onTabClick" class="vertical-tabs__tab vertical-tabs__tab--with-icon vertical-tabs__tab--mobile" aria-label="История выпусков. Фокус будет перенесён на панель истории.">
+              <i class="fa fa-history" aria-hidden="true"></i>
+              История выпусков
+            </a>
+            </li>
+            
+            <li role="tab">
+              <a id="mobile-files-tab" href="#files" data-project-tabs-target="mobileTab" data-action="project-tabs#onTabClick" class="vertical-tabs__tab vertical-tabs__tab--with-icon vertical-tabs__tab--mobile" aria-label="Загрузка файлов. Фокус будет перенесён на файлы проекта.">
+                <i class="fa fa-download" aria-hidden="true"></i>
+                Загрузка файлов
+              </a>
+            </li>
+            
+          </ul>
+        </nav>
+
+        
+        <div id="description" data-project-tabs-target="content" class="vertical-tabs__content" role="tabpanel" aria-labelledby="description-tab mobile-description-tab" tabindex="-1">
+          <h2 class="page-title">Описание проекта</h2>
+          
+          <div class="project-description">
+            <h1>py-ios-device</h1>
+<p><a href="https://pypi.org/project/py-ios-device/" rel=nofollow><img src="https://pypi-camo.global.ssl.fastly.net/0d35307f0fd05fbf72c6ce6281b037ff2ccc4813/68747470733a2f2f696d672e736869656c64732e696f2f707970692f762f70792d696f732d646576696365" alt=PyPI></a>
+<a href="https://pypistats.org/search/py-ios-device" rel=nofollow><img src="https://pypi-camo.global.ssl.fastly.net/556a4d9a266ff2aa0e86bc6c676819b5831cae68/68747470733a2f2f696d672e736869656c64732e696f2f707970692f646d2f70792d696f732d646576696365" alt="PyPI - Downloads"></a></p>
+<p>A python based Apple instruments protocol，you can get CPU, Memory and other metrics from real iOS devices</p>
+<p>link: <a href="https://testerhome.com/topics/27159" rel=nofollow>https://testerhome.com/topics/27159</a></p>
+<p><a href=README_CN.md rel=nofollow>中文文档</a></p>
+<p>Java link: <a href="https://github.com/YueChen-C/java-ios-device" rel=nofollow>https://github.com/YueChen-C/java-ios-device</a>)</p>
+<h2>pip :</h2>
+<pre><code>pip install py-ios-device
+</code></pre>
+<p>python version: 3.7 +</p>
+<h3>Instruments：</h3>
+<ul>
+<li><input type=checkbox checked disabled> Get system Memory and CPU data</li>
+<li><input type=checkbox checked disabled> Get application Memory and CPU data</li>
+<li><input type=checkbox checked disabled> Get FPS data</li>
+<li><input type=checkbox checked disabled> Get network data</li>
+<li><input type=checkbox checked disabled> Set the device network status. eg: 2G, 3G ,100% Loss</li>
+<li><input type=checkbox checked disabled> Set the device behaves as though under a high thermal state</li>
+<li><input type=checkbox checked disabled> Monitoring app start、exit、background</li>
+<li><input type=checkbox checked disabled> Launch and Kill app</li>
+<li><input type=checkbox checked disabled> Run xctest. eg: WebDriverAgent</li>
+<li><input type=checkbox checked disabled> Dump core profile stack snapshot</li>
+<li><input type=checkbox checked disabled> Analyze the core profile data stream</li>
+<li><input type=checkbox checked disabled> Get Metal GPU Counters</li>
+<li><input type=checkbox checked disabled> Get App Launch Lifecycle</li>
+</ul>
+<h3>Other</h3>
+<ul>
+<li><input type=checkbox checked disabled> Profiles &amp; Device Management. eg: Install and uninstall Fiddler certificate</li>
+<li><input type=checkbox checked disabled> Get syslog</li>
+<li><input type=checkbox checked disabled> Get crash log</li>
+<li><input type=checkbox checked disabled> Get the captured packet traffic and forward it to wireshark</li>
+<li><input type=checkbox checked disabled> App install and uninstall</li>
+<li><input type=checkbox checked disabled> Get device battery</li>
+<li><input type=checkbox checked disabled> Set simulate-location options</li>
+</ul>
+<h2>Usage：</h2>
+<h2>pip :</h2>
+<pre><code>&gt; pip install py-ios-device
+&gt; pyidevice --help
+&gt; pyidevice instruments --help
+</code></pre>
+<h4>Get device list</h4>
+<pre lang=bash>$<span class=w> </span>pyidevice<span class=w> </span>devices
+</pre>
+<h4>Get device info</h4>
+<pre lang=bash>$<span class=w> </span>pyidevice<span class=w> </span>--udid<span class=o>=</span>xxxxxx<span class=w> </span>deviceinfo
+</pre>
+<h4>Get System performance data</h4>
+<pre lang=bash>$<span class=w> </span>pyidevice<span class=w> </span>instruments<span class=w> </span>monitor<span class=w> </span>
+Memory<span class=w>  </span>&gt;&gt;<span class=w> </span><span class=o>{</span><span class=s1>'App Memory'</span>:<span class=w> </span><span class=s1>'699.69 MiB'</span>,<span class=w> </span><span class=s1>'Cached Files'</span>:<span class=w> </span><span class=s1>'1.48 GiB'</span>,<span class=w> </span><span class=s1>'Compressed'</span>:<span class=w> </span><span class=s1>'155.17 MiB'</span>,<span class=w> </span><span class=s1>'Memory Used'</span>:<span class=w> </span><span class=s1>'1.42 GiB'</span>,<span class=w> </span><span class=s1>'Wired Memory'</span>:<span class=w> </span><span class=s1>'427.91 MiB'</span>,<span class=w> </span><span class=s1>'Swap Used'</span>:<span class=w> </span><span class=s1>'46.25 MiB'</span><span class=o>}</span>
+Network<span class=w> </span>&gt;&gt;<span class=w> </span><span class=o>{</span><span class=s1>'Data Received'</span>:<span class=w> </span><span class=s1>'4.07 GiB'</span>,<span class=w> </span><span class=s1>'Data Received/sec'</span>:<span class=w> </span><span class=s1>'4.07 GiB'</span>,<span class=w> </span><span class=s1>'Data Sent'</span>:<span class=w> </span><span class=s1>'2.54 GiB'</span>,<span class=w> </span><span class=s1>'Data Sent/sec'</span>:<span class=w> </span><span class=s1>'2.54 GiB'</span>,<span class=w> </span><span class=s1>'Packets in'</span>:<span class=w> </span><span class=m>2885929</span>,<span class=w> </span><span class=s1>'Packets in/sec'</span>:<span class=w> </span><span class=m>6031576</span>,<span class=w> </span><span class=s1>'Packets Out'</span>:<span class=w> </span><span class=m>2885929</span>,<span class=w> </span><span class=s1>'Packets Out/sec'</span>:<span class=w> </span><span class=m>2885929</span><span class=o>}</span>
+Disk<span class=w>    </span>&gt;&gt;<span class=w> </span><span class=o>{</span><span class=s1>'Data Read'</span>:<span class=w> </span><span class=s1>'117.91 GiB'</span>,<span class=w> </span><span class=s1>'Data Read/sec'</span>:<span class=w> </span><span class=m>0</span>,<span class=w> </span><span class=s1>'Data Written'</span>:<span class=w> </span><span class=s1>'64.28 GiB'</span>,<span class=w> </span><span class=s1>'Data Written/sec'</span>:<span class=w> </span><span class=m>0</span>,<span class=w> </span><span class=s1>'Reads in'</span>:<span class=w> </span><span class=m>9734132</span>,<span class=w> </span><span class=s1>'Reads in/sec'</span>:<span class=w> </span><span class=m>9734132</span>,<span class=w> </span><span class=s1>'Writes Out'</span>:<span class=w> </span><span class=m>6810640</span>,<span class=w> </span><span class=s1>'Writes Out/sec'</span>:<span class=w> </span><span class=m>6810640</span><span class=o>}</span>
+
+$<span class=w> </span>pyidevice<span class=w> </span>instruments<span class=w> </span>monitor<span class=w> </span>--filter<span class=w> </span><span class=o>=</span><span class=w> </span>memory
+Memory<span class=w>  </span>&gt;&gt;<span class=w> </span><span class=o>{</span><span class=s1>'App Memory'</span>:<span class=w> </span><span class=s1>'699.69 MiB'</span>,<span class=w> </span><span class=s1>'Cached Files'</span>:<span class=w> </span><span class=s1>'1.48 GiB'</span>,<span class=w> </span><span class=s1>'Compressed'</span>:<span class=w> </span><span class=s1>'155.17 MiB'</span>,<span class=w> </span><span class=s1>'Memory Used'</span>:<span class=w> </span><span class=s1>'1.42 GiB'</span>,<span class=w> </span><span class=s1>'Wired Memory'</span>:<span class=w> </span><span class=s1>'427.91 MiB'</span>,<span class=w> </span><span class=s1>'Swap Used'</span>:<span class=w> </span><span class=s1>'46.25 MiB'</span><span class=o>}</span>
+</pre>
+<h4>Get application performance data</h4>
+<pre lang=bash>$<span class=w> </span>pyidevice<span class=w> </span>instruments<span class=w> </span>appmonitor<span class=w>  </span>-b<span class=w> </span>cn.rongcloud.im
+<span class=o>{</span><span class=s1>'Pid'</span>:<span class=w> </span><span class=m>30897</span>,<span class=w> </span><span class=s1>'Name'</span>:<span class=w> </span><span class=s1>'SealTalk'</span>,<span class=w> </span><span class=s1>'CPU'</span>:<span class=w> </span><span class=s1>'0 %'</span>,<span class=w> </span><span class=s1>'Memory'</span>:<span class=w> </span><span class=s1>'35.72 MiB'</span>,<span class=w> </span><span class=s1>'DiskReads'</span>:<span class=w> </span><span class=s1>'24.12 MiB'</span>,<span class=w> </span><span class=s1>'DiskWrites'</span>:<span class=w> </span><span class=s1>'2.28 MiB'</span>,<span class=w> </span><span class=s1>'Threads'</span>:<span class=w> </span><span class=m>13</span><span class=o>}</span>
+<span class=o>{</span><span class=s1>'Pid'</span>:<span class=w> </span><span class=m>30897</span>,<span class=w> </span><span class=s1>'Name'</span>:<span class=w> </span><span class=s1>'SealTalk'</span>,<span class=w> </span><span class=s1>'CPU'</span>:<span class=w> </span><span class=s1>'3.4 %'</span>,<span class=w> </span><span class=s1>'Memory'</span>:<span class=w> </span><span class=s1>'35.72 MiB'</span>,<span class=w> </span><span class=s1>'DiskReads'</span>:<span class=w> </span><span class=s1>'24.12 MiB'</span>,<span class=w> </span><span class=s1>'DiskWrites'</span>:<span class=w> </span><span class=s1>'2.30 MiB'</span>,<span class=w> </span><span class=s1>'Threads'</span>:<span class=w> </span><span class=m>13</span><span class=o>}</span>
+</pre>
+<h4>Get custom application performance data</h4>
+<pre lang=bash>$<span class=w> </span>pyidevice<span class=w> </span>instruments<span class=w> </span>sysmontap<span class=w> </span>--help
+$<span class=w> </span>pyidevice<span class=w> </span>instruments<span class=w> </span>sysmontap<span class=w>  </span>-b<span class=w> </span>com.tencent.xin<span class=w> </span>--proc_filter<span class=w> </span>physFootprint,cpuUsage<span class=w> </span>--processes<span class=w> </span>--sort<span class=w> </span>cpuUsage<span class=w> </span><span class=c1># 只显示 memVirtualSize,cpuUsage 参数的进程列表，且根据 cpuUsage 字段排序 </span>
+
+<span class=o>[(</span><span class=s1>'WeChat'</span>,<span class=w> </span><span class=o>{</span><span class=s1>'cpuUsage'</span>:<span class=w> </span><span class=m>0</span>.03663705586691998,<span class=w> </span><span class=s1>'physFootprint'</span>:<span class=w> </span><span class=m>2179284992</span>,<span class=w> </span><span class=s1>'name'</span>:<span class=w> </span><span class=s1>'WeChat'</span>,<span class=w> </span><span class=s1>'pid'</span>:<span class=w> </span><span class=m>99269</span><span class=o>})]</span>
+<span class=o>[(</span><span class=s1>'WeChat'</span>,<span class=w> </span><span class=o>{</span><span class=s1>'cpuUsage'</span>:<span class=w> </span><span class=m>0</span>.036558268613227536,<span class=w> </span><span class=s1>'physFootprint'</span>:<span class=w> </span><span class=m>2179284992</span>,<span class=w> </span><span class=s1>'name'</span>:<span class=w> </span><span class=s1>'WeChat'</span>,<span class=w> </span><span class=s1>'pid'</span>:<span class=w> </span><span class=m>99269</span><span class=o>})]</span>
+</pre>
+<h4>Get FPS data</h4>
+<pre lang=bash>$<span class=w> </span>pyidevice<span class=w> </span>instruments<span class=w> </span>fps
+
+<span class=o>{</span><span class=s1>'currentTime'</span>:<span class=w> </span><span class=s1>'2021-05-11 14:14:40.259059'</span>,<span class=w> </span><span class=s1>'fps'</span>:<span class=w> </span><span class=m>52</span><span class=o>}</span>
+<span class=o>{</span><span class=s1>'currentTime'</span>:<span class=w> </span><span class=s1>'2021-05-11 14:14:40.259059'</span>,<span class=w> </span><span class=s1>'fps'</span>:<span class=w> </span><span class=m>56</span><span class=o>}</span>
+</pre>
+<h4>Get network data</h4>
+<pre lang=bash>$<span class=w> </span>pyidevice<span class=w> </span>instruments<span class=w> </span>networking
+<span class=c1># Get all network data</span>
+<span class=s2>"connection-update{\"RxPackets\": 2, \"RxBytes\": 148, \"TxPackets\": 2, \"TxBytes\": 263, \"RxDups\": 0, \"RxOOO\": 0, \"TxRetx\": 0, \"MinRTT\": 0.05046875, \"AvgRTT\": 0.05046875, \"ConnectionSerial\": 5}"</span>
+<span class=s2>"connection-update{\"RxPackets\": 4, \"RxBytes\": 150, \"TxPackets\": 3, \"TxBytes\": 1431, \"RxDups\": 0, \"RxOOO\": 0, \"TxRetx\": 0, \"MinRTT\": 0.0539375, \"AvgRTT\": 0.0541875, \"ConnectionSerial\": 4}"</span>
+
+$<span class=w> </span>pyidevice<span class=w> </span>instruments<span class=w> </span>network_process<span class=w> </span>-p<span class=w> </span>com.tencent.xin<span class=w> </span>
+<span class=c1># Get application network data</span>
+<span class=o>{</span><span class=m>403</span>:<span class=w> </span><span class=o>{</span><span class=s1>'net.packets.delta'</span>:<span class=w> </span><span class=m>119</span>,<span class=w> </span><span class=s1>'time'</span>:<span class=w> </span><span class=m>1620720061</span>.0643349,<span class=w> </span><span class=s1>'net.tx.bytes'</span>:<span class=w> </span><span class=m>366715</span>,<span class=w> </span><span class=s1>'net.bytes.delta'</span>:<span class=w> </span><span class=m>63721</span>,<span class=w> </span><span class=s1>'net.rx.packets.delta'</span>:<span class=w> </span><span class=m>47</span>,<span class=w> </span><span class=s1>'net.tx.packets'</span>:<span class=w> </span><span class=m>633</span>,<span class=w> </span><span class=s1>'net.rx.bytes'</span>:<span class=w> </span><span class=m>34532</span>,<span class=w> </span><span class=s1>'net.bytes'</span>:<span class=w> </span><span class=m>401247</span>,<span class=w> </span><span class=s1>'net.tx.bytes.delta'</span>:<span class=w> </span><span class=m>56978</span>,<span class=w> </span><span class=s1>'net.rx.bytes.delta'</span>:<span class=w> </span><span class=m>6743</span>,<span class=w> </span><span class=s1>'net.rx.packets'</span>:<span class=w> </span><span class=m>169</span>,<span class=w> </span><span class=s1>'pid'</span>:<span class=w> </span><span class=m>403</span>,<span class=w> </span><span class=s1>'net.tx.packets.delta'</span>:<span class=w> </span><span class=m>72</span>,<span class=w> </span><span class=s1>'net.packets'</span>:<span class=w> </span><span class=m>802</span><span class=o>}}</span>
+<span class=o>{</span><span class=m>403</span>:<span class=w> </span><span class=o>{</span><span class=s1>'net.packets.delta'</span>:<span class=w> </span><span class=m>13</span>,<span class=w> </span><span class=s1>'time'</span>:<span class=w> </span><span class=m>1620720076</span>.2191892,<span class=w> </span><span class=s1>'net.tx.bytes'</span>:<span class=w> </span><span class=m>1303204</span>,<span class=w> </span><span class=s1>'net.bytes.delta'</span>:<span class=w> </span><span class=m>5060</span>,<span class=w> </span><span class=s1>'net.rx.packets.delta'</span>:<span class=w> </span><span class=m>5</span>,<span class=w> </span><span class=s1>'net.tx.packets'</span>:<span class=w> </span><span class=m>2083</span>,<span class=w> </span><span class=s1>'net.rx.bytes'</span>:<span class=w> </span><span class=m>46736</span>,<span class=w> </span><span class=s1>'net.bytes'</span>:<span class=w> </span><span class=m>1349940</span>,<span class=w> </span><span class=s1>'net.tx.bytes.delta'</span>:<span class=w> </span><span class=m>4682</span>,<span class=w> </span><span class=s1>'net.rx.bytes.delta'</span>:<span class=w> </span><span class=m>378</span>,<span class=w> </span><span class=s1>'net.rx.packets'</span>:<span class=w> </span><span class=m>379</span>,<span class=w> </span><span class=s1>'pid'</span>:<span class=w> </span><span class=m>403</span>,<span class=w> </span><span class=s1>'net.tx.packets.delta'</span>:<span class=w> </span><span class=m>8</span>,<span class=w> </span><span class=s1>'net.packets'</span>:<span class=w> </span><span class=m>2462</span><span class=o>}}</span>
+</pre>
+<h4>Set device status. iOS version &gt; 12</h4>
+<pre lang=bash>$<span class=w> </span>pyidevice<span class=w> </span>instruments<span class=w> </span>condition<span class=w> </span>get
+<span class=c1># Get device configuration information</span>
+
+$<span class=w> </span>pyidevice<span class=w> </span>instruments<span class=w> </span>condition<span class=w> </span><span class=nb>set</span><span class=w> </span>-c<span class=w> </span>SlowNetworkCondition<span class=w> </span>-p<span class=w> </span>SlowNetwork2GUrban
+<span class=c1># Set the device network status. eg: 2G, 3G ,100% Loss</span>
+
+$<span class=w> </span>pyidevice<span class=w> </span>instruments<span class=w> </span>condition<span class=w> </span><span class=nb>set</span><span class=w> </span>-c<span class=w> </span>ThermalCondition<span class=w> </span>-p<span class=w> </span>ThermalCritical
+<span class=c1># Set the device behaves as though under a high thermal state</span>
+</pre>
+<h4>Listen to app notifications</h4>
+<pre lang=bash>$<span class=w> </span>pyidevice<span class=w> </span>instruments<span class=w> </span>notifications
+<span class=o>[{</span><span class=s1>'execName'</span>:<span class=w> </span><span class=s1>'MobileNotes'</span>,<span class=w> </span><span class=s1>'state_description'</span>:<span class=w> </span><span class=s1>'Foreground Running'</span>,<span class=w> </span><span class=s1>'elevated_state_description'</span>:<span class=w> </span><span class=s1>'Foreground Running'</span>,<span class=w> </span><span class=s1>'displayID'</span>:<span class=w> </span><span class=s1>'com.apple.mobilenotes'</span>,<span class=w> </span><span class=s1>'mach_absolute_time'</span>:<span class=w> </span><span class=m>27205542653928</span>,<span class=w> </span><span class=s1>'appName'</span>:<span class=w> </span><span class=s1>'Notes'</span>,<span class=w> </span><span class=s1>'elevated_state'</span>:<span class=w> </span><span class=m>8</span>,<span class=w> </span><span class=s1>'timestamp'</span>:<span class=w> </span><span class=m>1620714619</span>.1264,<span class=w> </span><span class=s1>'state'</span>:<span class=w> </span><span class=m>8</span>,<span class=w> </span><span class=s1>'pid'</span>:<span class=w> </span><span class=m>99367</span><span class=o>}]</span>
+<span class=o>[{</span><span class=s1>'execName'</span>:<span class=w> </span><span class=s1>'MobileNotes'</span>,<span class=w> </span><span class=s1>'state_description'</span>:<span class=w> </span><span class=s1>'Background Running'</span>,<span class=w> </span><span class=s1>'elevated_state_description'</span>:<span class=w> </span><span class=s1>'Background Running'</span>,<span class=w> </span><span class=s1>'displayID'</span>:<span class=w> </span><span class=s1>'com.apple.mobilenotes'</span>,<span class=w> </span><span class=s1>'mach_absolute_time'</span>:<span class=w> </span><span class=m>27205678872050</span>,<span class=w> </span><span class=s1>'appName'</span>:<span class=w> </span><span class=s1>'Notes'</span>,<span class=w> </span><span class=s1>'elevated_state'</span>:<span class=w> </span><span class=m>4</span>,<span class=w> </span><span class=s1>'timestamp'</span>:<span class=w> </span><span class=m>1620714624</span>.802145,<span class=w> </span><span class=s1>'state'</span>:<span class=w> </span><span class=m>4</span>,<span class=w> </span><span class=s1>'pid'</span>:<span class=w> </span><span class=m>99367</span><span class=o>}]</span>
+<span class=o>[{</span><span class=s1>'execName'</span>:<span class=w> </span><span class=s1>'MobileNotes'</span>,<span class=w> </span><span class=s1>'state_description'</span>:<span class=w> </span><span class=s1>'Background Task Suspended'</span>,<span class=w> </span><span class=s1>'elevated_state_description'</span>:<span class=w> </span><span class=s1>'Background Task Suspended'</span>,<span class=w> </span><span class=s1>'displayID'</span>:<span class=w> </span><span class=s1>'com.apple.mobilenotes'</span>,<span class=w> </span><span class=s1>'mach_absolute_time'</span>:<span class=w> </span><span class=m>27205683486410</span>,<span class=w> </span><span class=s1>'appName'</span>:<span class=w> </span><span class=s1>'Notes'</span>,<span class=w> </span><span class=s1>'elevated_state'</span>:<span class=w> </span><span class=m>2</span>,<span class=w> </span><span class=s1>'timestamp'</span>:<span class=w> </span><span class=m>1620714624</span>.99441,<span class=w> </span><span class=s1>'state'</span>:<span class=w> </span><span class=m>2</span>,<span class=w> </span><span class=s1>'pid'</span>:<span class=w> </span><span class=m>99367</span><span class=o>}]</span>
+</pre>
+<h4>Dump core profile stack snapshot</h4>
+<pre lang=bash>$<span class=w> </span>pyidevice<span class=w> </span>instruments<span class=w> </span>stackshot<span class=w> </span>--out<span class=w> </span>stackshot.log
+</pre>
+<h4>Analyze the core profile data stream</h4>
+<pre lang=bash>$<span class=w> </span>pyidevice<span class=w> </span>instruments<span class=w> </span>instruments<span class=w> </span>core_profile<span class=w> </span>--pid<span class=o>=</span><span class=m>1107</span>
+SealTalk<span class=o>(</span><span class=m>1107</span><span class=o>)</span><span class=w>             </span>PERF_THD_CSwitch<span class=w> </span><span class=o>(</span>0x25010014<span class=o>)</span><span class=w>                               </span>DBG_PERF<span class=w>          </span>PERF_DATA<span class=w>                     </span>DBG_FUNC_NONE<span class=w>  </span>
+SealTalk<span class=o>(</span><span class=m>1107</span><span class=o>)</span><span class=w>             </span>MACH_DISPATCH<span class=w> </span><span class=o>(</span>0x1400080<span class=o>)</span><span class=w>                                   </span>DBG_MACH<span class=w>          </span>DBG_MACH_SCHED<span class=w>                </span>DBG_FUNC_NONE<span class=w>  </span>
+SealTalk<span class=o>(</span><span class=m>1107</span><span class=o>)</span><span class=w>             </span>DecrSet<span class=w> </span><span class=o>(</span>0x1090004<span class=o>)</span><span class=w>                                         </span>DBG_MACH<span class=w>          </span>DBG_MACH_EXCP_DECI<span class=w>            </span>DBG_FUNC_NONE<span class=w>  </span>
+</pre>
+<h4>Get Metal GPU Counters</h4>
+<pre lang=bash>$<span class=w> </span>pyidevice<span class=w> </span>instruments<span class=w> </span>gpu_counters
+<span class=m>15</span>.132907<span class=w> </span>ALU<span class=w> </span>Limiter<span class=w>                                  </span><span class=m>93</span>.77<span class=w> </span>
+<span class=m>15</span>.132907<span class=w> </span>Texture<span class=w> </span>Sample<span class=w> </span>Limiter<span class=w>                       </span><span class=m>39</span>.62<span class=w> </span>
+<span class=m>15</span>.132907<span class=w> </span>Texture<span class=w> </span>Write<span class=w> </span>Limiter<span class=w>                        </span><span class=m>13</span>.87<span class=w> </span>
+<span class=m>15</span>.132907<span class=w> </span>Buffer<span class=w> </span>Read<span class=w> </span>Limiter<span class=w>                          </span><span class=m>0</span>.01<span class=w>  </span>
+<span class=m>15</span>.132907<span class=w> </span>Buffer<span class=w> </span>Write<span class=w> </span>Limiter<span class=w>                         </span><span class=m>0</span><span class=w>     </span>
+<span class=m>15</span>.132907<span class=w> </span>Threadgroup/Imageblock<span class=w> </span>Load<span class=w> </span>Limiter<span class=w>          </span><span class=m>17</span>.16<span class=w> </span>
+<span class=m>15</span>.132907<span class=w> </span>Threadgroup/Imageblock<span class=w> </span>Store<span class=w> </span>Limiter<span class=w>         </span><span class=m>10</span>.9<span class=w>  </span>
+<span class=m>15</span>.132907<span class=w> </span>Fragment<span class=w> </span>Input<span class=w> </span>Interpolation<span class=w> </span>Limiter<span class=w>         </span><span class=m>15</span>.74<span class=w> </span>
+<span class=m>15</span>.132907<span class=w> </span>GPU<span class=w> </span>Last<span class=w> </span>Level<span class=w> </span>Cache<span class=w> </span>Limiter<span class=w>                 </span><span class=m>6</span>.24<span class=w>  </span>
+<span class=m>15</span>.132907<span class=w> </span>Vertex<span class=w> </span>Occupancy<span class=w>                             </span><span class=m>0</span><span class=w>     </span>
+<span class=m>15</span>.132907<span class=w> </span>Fragment<span class=w> </span>Occupancy<span class=w>                           </span><span class=m>91</span>.44<span class=w> </span>
+<span class=m>15</span>.132907<span class=w> </span>Compute<span class=w> </span>Occupancy<span class=w>                            </span><span class=m>0</span><span class=w>     </span>
+<span class=m>15</span>.132907<span class=w> </span>GPU<span class=w> </span>Read<span class=w> </span>Bandwidth<span class=w>                           </span><span class=m>2</span>.65<span class=w>  </span>
+<span class=m>15</span>.132907<span class=w> </span>GPU<span class=w> </span>Write<span class=w> </span>Bandwidth<span class=w>                          </span><span class=m>1</span>.25<span class=w>  </span>
+</pre>
+<h4>Get App Launch Lifecycle</h4>
+<pre lang=bash>$<span class=w> </span>pyidevice<span class=w> </span>instruments<span class=w> </span>app_lifecycle<span class=w> </span>-b<span class=w> </span>cn.rongcloud.im
+<span class=w>  </span><span class=m>31</span>.20<span class=w> </span>ms<span class=w>   </span>Initializing-System<span class=w> </span>Interface<span class=w> </span>Initialization<span class=w> </span><span class=o>(</span>Dyld<span class=w> </span>init<span class=o>)</span>
+<span class=w>  </span><span class=m>14</span>.33<span class=w> </span>ms<span class=w>   </span>Initializing-Static<span class=w> </span>Runtime<span class=w> </span>Initialization
+<span class=w>  </span><span class=m>35</span>.68<span class=w> </span>ms<span class=w>   </span>Launching-UIKit<span class=w> </span>Initialization
+<span class=w> </span><span class=m>810</span>.46<span class=w> </span>us<span class=w>   </span>Launching-UIKit<span class=w> </span>Scene<span class=w> </span>Creation
+<span class=w> </span><span class=m>100</span>.64<span class=w> </span>ms<span class=w>   </span>Launching-didFinishLaunchingWithOptions<span class=o>()</span>
+<span class=w>   </span><span class=m>2</span>.91<span class=w> </span>ms<span class=w>   </span>Launching-UIKit<span class=w> </span>Scene<span class=w> </span>Creation
+<span class=w>  </span><span class=m>21</span>.85<span class=w> </span>ms<span class=w>   </span>Launching-Initial<span class=w> </span>Frame<span class=w> </span>Rendering
+App<span class=w> </span>Thread<span class=w> </span>Process<span class=w> </span>ID:6506076,<span class=w> </span>Total<span class=w> </span>Time:207.41<span class=w> </span>ms
+</pre>
+<h3>Other</h3>
+<h4>Profiles &amp; Device Management</h4>
+<pre lang=bash>$<span class=w> </span>pyidevice<span class=w> </span>profiles<span class=w> </span>list
+<span class=o>{</span>
+<span class=w>    </span><span class=s2>"OrderedIdentifiers"</span>:<span class=w> </span><span class=o>[</span>
+<span class=w>        </span><span class=s2>"aaaff7e2b7df39eeb77bfbc0cd7a70ea99f3fd97a"</span>
+<span class=w>    </span><span class=o>]</span>,
+<span class=w>    </span><span class=s2>"ProfileManifest"</span>:<span class=w> </span><span class=o>{</span>
+<span class=w>        </span><span class=s2>"aaaff7e2b7df39eeb77bfbc0cd7a70ea99f3fd97a"</span>:<span class=w> </span><span class=o>{</span>
+<span class=w>            </span><span class=s2>"Description"</span>:<span class=w> </span><span class=s2>"DO_NOT_TRUST_FiddlerRoot"</span>,
+<span class=w>            </span><span class=s2>"IsActive"</span>:<span class=w> </span><span class=nb>true</span>
+<span class=w>        </span><span class=o>}</span>
+<span class=w>    </span><span class=o>}</span>,
+<span class=w>    </span><span class=s2>"ProfileMetadata"</span>:<span class=w> </span><span class=o>{</span>
+<span class=w>        </span><span class=s2>"aaaff7e2b7df39eeb77bfbc0cd7a70ea99f3fd97a"</span>:<span class=w> </span><span class=o>{</span>
+<span class=w>            </span><span class=s2>"PayloadDisplayName"</span>:<span class=w> </span><span class=s2>"DO_NOT_TRUST_FiddlerRoot"</span>,
+<span class=w>            </span><span class=s2>"PayloadRemovalDisallowed"</span>:<span class=w> </span>false,
+<span class=w>            </span><span class=s2>"PayloadUUID"</span>:<span class=w> </span><span class=s2>"C8CE7BC1-F840-4616-B606-337F8CB6AE19"</span>,
+<span class=w>            </span><span class=s2>"PayloadVersion"</span>:<span class=w> </span><span class=m>1</span>
+<span class=w>        </span><span class=o>}</span>
+<span class=w>    </span><span class=o>}</span>,
+<span class=w>    </span><span class=s2>"Status"</span>:<span class=w> </span><span class=s2>"Acknowledged"</span>
+<span class=o>}</span>
+
+$<span class=w> </span>pyidevice<span class=w> </span>profiles<span class=w> </span>install<span class=w>  </span>--path<span class=w> </span>Downloads/charles-certificate.pem
+<span class=c1>## install charles certificate</span>
+
+$<span class=w> </span>pyidevice<span class=w> </span>profiles<span class=w> </span>remove<span class=w> </span>--name<span class=w> </span>fe7371d9ce36c541ac8dee5f51f3b490b2aa98dcd95699ee44717fd5233fe7a0a
+<span class=c1>## uninstall charles certificate</span>
+</pre>
+<h4>get syslog</h4>
+<pre lang=bash>$<span class=w> </span>pyidevice<span class=w> </span>syslog
+<span class=c1># --path</span>
+<span class=c1># --filter</span>
+</pre>
+<h4>get crash syslog</h4>
+<pre lang=bash>$<span class=w> </span>pyidevice<span class=w> </span>crash<span class=w> </span>list
+<span class=o>[</span><span class=s1>'.'</span>,<span class=w> </span><span class=s1>'..'</span>,<span class=w> </span><span class=s1>'com.apple.appstored'</span>,<span class=w> </span><span class=s1>'JetsamEvent-2021-05-12-112126.ips'</span><span class=o>]</span>
+
+$<span class=w> </span>pyidevice<span class=w> </span>crash<span class=w> </span><span class=nb>export</span><span class=w> </span>--name<span class=w> </span>JetsamEvent-2021-05-12-112126.ips
+
+$<span class=w> </span>pyidevice<span class=w> </span>crash<span class=w> </span>delete<span class=w> </span>--name<span class=w> </span>JetsamEvent-2021-05-12-112126.ips
+
+$<span class=w> </span>pyidevice<span class=w> </span>crash<span class=w> </span>shell
+</pre>
+<h4>apps</h4>
+<pre lang=bash>$<span class=w> </span>pyidevice<span class=w> </span>apps<span class=w> </span>list
+
+$<span class=w> </span>pyidevice<span class=w> </span>apps<span class=w> </span>install<span class=w> </span>--ipa_path
+
+$<span class=w> </span>pyidevice<span class=w> </span>apps<span class=w> </span>uninstall<span class=w> </span>--bundle_id<span class=w> </span>
+
+$<span class=w> </span>pyidevice<span class=w> </span>apps<span class=w> </span>launch<span class=w> </span>--bundle_id
+
+$<span class=w> </span>pyidevice<span class=w> </span>apps<span class=w> </span><span class=nb>kill</span><span class=w> </span>--bundle_id
+
+$<span class=w> </span>pyidevice<span class=w> </span>apps<span class=w> </span>shell<span class=w> </span>
+</pre>
+<h4>packet capture</h4>
+<pre lang=bash>$<span class=w> </span>pyidevice<span class=w> </span>pcapd<span class=w> </span>./test/test.pacp
+
+$<span class=w> </span>pyidevice<span class=w> </span>pcapd<span class=w> </span>-<span class=w> </span><span class=p>|</span><span class=w> </span><span class=s2>"/Applications/Wireshark.app/Contents/MacOS/Wireshark"</span><span class=w> </span>-k<span class=w> </span>-i<span class=w> </span>-
+<span class=c1># mac forword Wireshark</span>
+
+$<span class=w> </span>pyidevice<span class=w> </span>pcapd<span class=w> </span>-<span class=w> </span><span class=p>|</span><span class=w> </span><span class=s2>"D:\Program Files\Wireshark\Wireshark.exe"</span><span class=w> </span>-k<span class=w> </span>-i<span class=w> </span>-
+<span class=c1># win forword Wireshark</span>
+</pre>
+<h4>device battery</h4>
+<pre lang=bash>$<span class=w> </span>pyidevice<span class=w> </span>battery
+<span class=c1># [Battery] time=1622777708, current=-71, voltage=4330, power=-307.43, temperature=3279</span>
+</pre>
+<h4>enable developer mode</h4>
+<pre lang=bash>$<span class=w> </span>pyidevice<span class=w> </span>enable_developer_mode
+</pre>
+<h4>using python</h4>
+<pre lang=python3><span class=kn>from</span> <span class=nn>ios_device.cli.base</span> <span class=kn>import</span> <span class=n>InstrumentsBase</span>
+<span class=kn>from</span> <span class=nn>ios_device.util.dtx_msg</span> <span class=kn>import</span> <span class=n>DTXMessage</span>
+
+<span class=k>with</span> <span class=n>InstrumentsBase</span><span class=p>()</span> <span class=k>as</span> <span class=n>rpc</span><span class=p>:</span>
+    <span class=k>def</span> <span class=nf>sysmontap_callback</span><span class=p>(</span><span class=n>res</span><span class=p>:</span> <span class=n>DTXMessage</span><span class=p>):</span>
+        <span class=nb>print</span><span class=p>(</span><span class=n>res</span><span class=o>.</span><span class=n>selector</span><span class=p>,</span> <span class=n>res</span><span class=o>.</span><span class=n>auxiliaries</span><span class=p>)</span>
+
+    <span class=n>rpc</span><span class=o>.</span><span class=n>process_attributes</span> <span class=o>=</span> <span class=p>[</span><span class=s1>'name'</span><span class=p>,</span> <span class=s1>'pid'</span><span class=p>]</span>
+    <span class=n>rpc</span><span class=o>.</span><span class=n>system_attributes</span> <span class=o>=</span> <span class=n>rpc</span><span class=o>.</span><span class=n>device_info</span><span class=o>.</span><span class=n>sysmonSystemAttributes</span><span class=p>()</span>
+    <span class=n>rpc</span><span class=o>.</span><span class=n>sysmontap</span><span class=p>(</span><span class=n>sysmontap_callback</span><span class=p>)</span>
+</pre>
+<p>QQ ：37042417</p>
+<p>api : <a href="./doc/%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3.md" rel=nofollow>document</a>
+demo: <a href="./test/test.py" rel=nofollow>document</a></p>
+
+          </div>
+          
+        </div>
+
+        
+        <div id="data" data-project-tabs-target="content" class="vertical-tabs__content" role="tabpanel" aria-labelledby="mobile-data-tab" tabindex="-1">
+          <h2 class="page-title">Подробности проекта</h2>
+          
+<div class="sidebar-section">
+  <h3 class="sidebar-section__title">Ссылки проекта</h3>
+  <ul class="vertical-tabs__list">
+    
+    
+    <li>
+      <a class="vertical-tabs__tab vertical-tabs__tab--with-icon vertical-tabs__tab--condensed" href="https://github.com/YueChen-C/py-ios-device" rel="nofollow">
+        
+
+
+  
+
+
+<i class="fas fa-home" aria-hidden="true"></i>Homepage
+      </a>
+    </li>
+    
+    
+  </ul>
+</div>
+
+
+<div class="sidebar-section">
+  <h3 class="sidebar-section__title">Статистика</h3>
+  
+  <div class="hidden github-repo-info" data-controller="github-repo-info">
+    Статистика GitHub:
+    <ul class="vertical-tabs__list">
+      <li>
+        <a class="vertical-tabs__tab vertical-tabs__tab--with-icon vertical-tabs__tab--condensed"
+           data-github-repo-info-target="stargazersUrl" rel="noopener">
+          <i class="fa fa-star" aria-hidden="true"></i>
+          <strong>Звёзд:</strong>
+          <span data-github-repo-info-target="stargazersCount"></span>
+        </a>
+      </li>
+      <li>
+        <a class="vertical-tabs__tab vertical-tabs__tab--with-icon vertical-tabs__tab--condensed"
+           data-github-repo-info-target="forksUrl" rel="noopener">
+          <i class="fa fa-code-branch" aria-hidden="true"></i>
+          <strong>Форков:</strong>
+          <span data-github-repo-info-target="forksCount"></span>
+        </a>
+      </li>
+      <li>
+        <a class="vertical-tabs__tab vertical-tabs__tab--with-icon vertical-tabs__tab--condensed"
+           data-github-repo-info-target="openIssuesUrl" rel="noopener">
+          <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+          <strong>Open issues:</strong>
+          <span data-github-repo-info-target="openIssuesCount"></span>
+        </a>
+      </li>
+      <li>
+        <a class="vertical-tabs__tab vertical-tabs__tab--with-icon vertical-tabs__tab--condensed"
+           data-github-repo-info-target="openPRsUrl" rel="noopener">
+          <i class="fa fa-code-pull-request" aria-hidden="true"></i>
+          <strong>Open PRs:</strong>
+          <span data-github-repo-info-target="openPRsCount"></span>
+        </a>
+      </li>
+    </ul>
+  </div>
+  
+  <p>
+    Смотрите статистику этого проекта на <a href="https://libraries.io/pypi/py-ios-device" title="Внешняя ссылка" target="_blank" rel="noopener">Libraries.io</a> или в <a href="https://packaging.python.org/guides/analyzing-pypi-package-downloads/" target="_blank" rel="noopener">нашем общедоступном наборе данных на Google BigQuery</a>
+  </p>
+</div>
+
+
+<div class="sidebar-section">
+  <h3 class="sidebar-section__title">Метаданные</h3>
+  
+  
+    <p><strong>Автор:</strong> <a href="mailto:cpjsf@163.com">chenpeijie</a></p>
+  
+  
+    <p><strong>Сопровождающий:</strong> chenpeijie</p>
+  
+  
+  
+  <p>
+    <strong>Требует:</strong> Python &gt;=3.7
+  </p>
+  
+</div>
+
+
+<div class="sidebar-section">
+  
+  
+    <h3 class="sidebar-section__title">Сопровождающие</h3>
+    
+      
+      <span class="sidebar-section__maintainer">
+        <a href="/user/chenpeijie/" aria-label="chenpeijie">
+          <span class="sidebar-section__user-gravatar">
+            <img src="https://pypi-camo.global.ssl.fastly.net/d5ad45b02828365c0d31a89b5da20d412e77399a/68747470733a2f2f7365637572652e67726176617461722e636f6d2f6176617461722f37396333383739303661343039653230373433643765663730653439356330343f73697a653d3530" height="50" width="50" alt="Аватар для chenpeijie из gravatar.com" title="Аватар для chenpeijie из gravatar.com">
+          </span>
+          <span class="sidebar-section__user-gravatar-text">
+            chenpeijie
+          </span>
+        </a>
+      </span>
+    
+      
+      <span class="sidebar-section__maintainer">
+        <a href="/user/xiaochao/" aria-label="xiaochao">
+          <span class="sidebar-section__user-gravatar">
+            <img src="https://pypi-camo.global.ssl.fastly.net/a3c924911526331db42c398fe7e618317cb29937/68747470733a2f2f7365637572652e67726176617461722e636f6d2f6176617461722f30313863613935653330633735343033643337653331366431323736613134643f73697a653d3530" height="50" width="50" alt="Аватар для xiaochao из gravatar.com" title="Аватар для xiaochao из gravatar.com">
+          </span>
+          <span class="sidebar-section__user-gravatar-text">
+            xiaochao
+          </span>
+        </a>
+      </span>
+    
+  
+</div>
+
+
+<div class="sidebar-section">
+  <h3 class="sidebar-section__title">Классификаторы</h3>
+  <ul class="sidebar-section__classifiers">
+    
+    <li>
+      <strong>Operating System</strong>
+      <ul>
+        
+        <li>
+          <a href="/search/?c=Operating+System+%3A%3A+OS+Independent">
+            OS Independent
+          </a>
+        </li>
+        
+      </ul>
+    </li>
+    
+    <li>
+      <strong>Programming Language</strong>
+      <ul>
+        
+        <li>
+          <a href="/search/?c=Programming+Language+%3A%3A+Python+%3A%3A+3">
+            Python :: 3
+          </a>
+        </li>
+        
+      </ul>
+    </li>
+    
+  </ul>
+</div>
+
+          <br>
+        </div>
+
+        
+        <div id="history" data-project-tabs-target="content" class="vertical-tabs__content" role="tabpanel" aria-labelledby="history-tab mobile-history-tab" tabindex="-1">
+          <h2 class="page-title split-layout">
+            <span>История выпусков</span>
+            <span class="reset-text margin-top">
+              <a href="/help/#project-release-notifications">Уведомления о выпусках</a> |
+              <a href="/rss/project/py-ios-device/releases.xml">Лента RSS <i class="fa fa-rss" aria-hidden="true"></i></a>
+            </span>
+          </h2>
+
+          <div class="release-timeline">
+            
+            
+            
+            
+            <div class="release release--latest release--current">
+              <div class="release__meta">
+                
+                <span class="badge">Эта версия</span>
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/blue-cube.572a5bfb.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/py-ios-device/2.3.35/">
+                <p class="release__version">
+                  2.3.35
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2023-09-08T11:09:24+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  8 сент. 2023 г.
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.2351a86c.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/py-ios-device/2.3.32.5/">
+                <p class="release__version">
+                  2.3.32.5
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2023-07-11T11:49:03+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  11 июл. 2023 г.
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.2351a86c.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/py-ios-device/2.3.32.4/">
+                <p class="release__version">
+                  2.3.32.4
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2023-06-16T01:58:46+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  16 июн. 2023 г.
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.2351a86c.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/py-ios-device/2.3.32.2/">
+                <p class="release__version">
+                  2.3.32.2
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2023-05-24T02:44:59+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  24 мая 2023 г.
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.2351a86c.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/py-ios-device/2.3.32.1/">
+                <p class="release__version">
+                  2.3.32.1
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2023-04-26T06:22:37+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  26 апр. 2023 г.
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.2351a86c.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/py-ios-device/2.3.32/">
+                <p class="release__version">
+                  2.3.32
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2023-04-20T03:25:00+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  20 апр. 2023 г.
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.2351a86c.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/py-ios-device/2.3.31/">
+                <p class="release__version">
+                  2.3.31
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2023-03-21T02:14:33+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  21 мар. 2023 г.
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.2351a86c.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/py-ios-device/2.3.22/">
+                <p class="release__version">
+                  2.3.22
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2023-02-27T01:43:01+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  27 февр. 2023 г.
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.2351a86c.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/py-ios-device/2.3.21/">
+                <p class="release__version">
+                  2.3.21
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2023-02-22T01:27:52+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  22 февр. 2023 г.
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.2351a86c.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/py-ios-device/2.3.14/">
+                <p class="release__version">
+                  2.3.14
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2023-02-14T03:29:21+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  14 февр. 2023 г.
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.2351a86c.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/py-ios-device/2.3.13/">
+                <p class="release__version">
+                  2.3.13
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2023-02-14T02:45:30+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  14 февр. 2023 г.
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.2351a86c.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/py-ios-device/2.3.12/">
+                <p class="release__version">
+                  2.3.12
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2023-02-09T10:05:59+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  9 февр. 2023 г.
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.2351a86c.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/py-ios-device/2.3.3/">
+                <p class="release__version">
+                  2.3.3
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2023-03-17T09:42:16+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  17 мар. 2023 г.
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.2351a86c.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/py-ios-device/2.3.2/">
+                <p class="release__version">
+                  2.3.2
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2023-02-16T03:07:04+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  16 февр. 2023 г.
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.2351a86c.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/py-ios-device/2.3.1/">
+                <p class="release__version">
+                  2.3.1
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2023-01-04T06:00:46+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  4 янв. 2023 г.
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.2351a86c.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/py-ios-device/2.3.0/">
+                <p class="release__version">
+                  2.3.0
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2022-12-08T06:35:38+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  8 дек. 2022 г.
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.2351a86c.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/py-ios-device/2.2.3.9/">
+                <p class="release__version">
+                  2.2.3.9
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2022-12-08T06:34:19+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  8 дек. 2022 г.
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.2351a86c.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/py-ios-device/2.2.3.8/">
+                <p class="release__version">
+                  2.2.3.8
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2022-11-25T12:06:49+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  25 нояб. 2022 г.
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.2351a86c.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/py-ios-device/2.2.3.7/">
+                <p class="release__version">
+                  2.2.3.7
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2022-07-12T11:21:40+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  12 июл. 2022 г.
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.2351a86c.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/py-ios-device/2.2.3.6/">
+                <p class="release__version">
+                  2.2.3.6
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2022-07-08T10:40:14+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  8 июл. 2022 г.
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.2351a86c.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/py-ios-device/2.2.3.5/">
+                <p class="release__version">
+                  2.2.3.5
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2022-06-08T03:06:13+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  8 июн. 2022 г.
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.2351a86c.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/py-ios-device/2.2.3.4/">
+                <p class="release__version">
+                  2.2.3.4
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2022-05-07T02:25:58+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  7 мая 2022 г.
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.2351a86c.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/py-ios-device/2.2.3.3/">
+                <p class="release__version">
+                  2.2.3.3
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2022-03-29T11:17:48+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  29 мар. 2022 г.
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.2351a86c.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/py-ios-device/2.2.3.2/">
+                <p class="release__version">
+                  2.2.3.2
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2022-03-04T09:42:00+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  4 мар. 2022 г.
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.2351a86c.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/py-ios-device/2.2.3.1/">
+                <p class="release__version">
+                  2.2.3.1
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2021-11-18T09:35:25+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  18 нояб. 2021 г.
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.2351a86c.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/py-ios-device/2.2.3/">
+                <p class="release__version">
+                  2.2.3
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2021-11-05T08:53:33+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  5 нояб. 2021 г.
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.2351a86c.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/py-ios-device/2.2.2/">
+                <p class="release__version">
+                  2.2.2
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2021-10-27T02:11:52+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  27 окт. 2021 г.
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.2351a86c.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/py-ios-device/2.2.1/">
+                <p class="release__version">
+                  2.2.1
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2021-10-26T06:18:54+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  26 окт. 2021 г.
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.2351a86c.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/py-ios-device/2.2.0/">
+                <p class="release__version">
+                  2.2.0
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2021-10-25T06:41:00+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  25 окт. 2021 г.
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.2351a86c.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/py-ios-device/2.1.9/">
+                <p class="release__version">
+                  2.1.9
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2021-10-09T08:31:12+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  9 окт. 2021 г.
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.2351a86c.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/py-ios-device/2.1.8/">
+                <p class="release__version">
+                  2.1.8
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2021-08-23T03:27:05+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  23 авг. 2021 г.
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.2351a86c.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/py-ios-device/2.1.7/">
+                <p class="release__version">
+                  2.1.7
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2021-08-13T08:04:39+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  13 авг. 2021 г.
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.2351a86c.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/py-ios-device/2.1.6/">
+                <p class="release__version">
+                  2.1.6
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2021-07-27T09:16:12+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  27 июл. 2021 г.
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.2351a86c.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/py-ios-device/2.1.5/">
+                <p class="release__version">
+                  2.1.5
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2021-07-27T07:44:21+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  27 июл. 2021 г.
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.2351a86c.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/py-ios-device/2.1.4/">
+                <p class="release__version">
+                  2.1.4
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2021-07-20T03:36:33+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  20 июл. 2021 г.
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.2351a86c.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/py-ios-device/2.1.3/">
+                <p class="release__version">
+                  2.1.3
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2021-06-30T03:51:38+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  30 июн. 2021 г.
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.2351a86c.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/py-ios-device/2.1.2/">
+                <p class="release__version">
+                  2.1.2
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2021-06-22T06:38:28+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  22 июн. 2021 г.
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.2351a86c.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/py-ios-device/2.1.1/">
+                <p class="release__version">
+                  2.1.1
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2021-06-11T08:19:16+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  11 июн. 2021 г.
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.2351a86c.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/py-ios-device/2.1.0/">
+                <p class="release__version">
+                  2.1.0
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2021-06-11T06:47:16+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  11 июн. 2021 г.
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.2351a86c.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/py-ios-device/2.0.2/">
+                <p class="release__version">
+                  2.0.2
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2021-06-04T06:25:13+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  4 июн. 2021 г.
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.2351a86c.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/py-ios-device/2.0.0/">
+                <p class="release__version">
+                  2.0.0
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2021-05-12T07:34:17+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  12 мая 2021 г.
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.2351a86c.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/py-ios-device/1.0.8/">
+                <p class="release__version">
+                  1.0.8
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2021-03-09T05:52:56+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  9 мар. 2021 г.
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.2351a86c.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/py-ios-device/1.0.7/">
+                <p class="release__version">
+                  1.0.7
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2021-03-08T05:11:47+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  8 мар. 2021 г.
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.2351a86c.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/py-ios-device/1.0.6/">
+                <p class="release__version">
+                  1.0.6
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2021-03-08T05:04:56+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  8 мар. 2021 г.
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.2351a86c.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/py-ios-device/1.0.5/">
+                <p class="release__version">
+                  1.0.5
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2021-03-08T04:01:08+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  8 мар. 2021 г.
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.2351a86c.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/py-ios-device/1.0.4/">
+                <p class="release__version">
+                  1.0.4
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2021-03-04T06:38:31+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  4 мар. 2021 г.
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.2351a86c.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/py-ios-device/1.0.3/">
+                <p class="release__version">
+                  1.0.3
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2021-03-03T03:37:59+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  3 мар. 2021 г.
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.2351a86c.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/py-ios-device/1.0.2/">
+                <p class="release__version">
+                  1.0.2
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2021-03-02T07:42:31+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  2 мар. 2021 г.
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.2351a86c.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/py-ios-device/1.0.1/">
+                <p class="release__version">
+                  1.0.1
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2021-02-25T08:43:26+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  25 февр. 2021 г.
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.2351a86c.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/py-ios-device/1.0/">
+                <p class="release__version">
+                  1.0
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2021-02-25T07:59:58+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  25 февр. 2021 г.
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.2351a86c.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/py-ios-device/0.25/">
+                <p class="release__version">
+                  0.25
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2020-12-21T10:32:54+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  21 дек. 2020 г.
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.2351a86c.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/py-ios-device/0.24/">
+                <p class="release__version">
+                  0.24
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2020-12-21T09:16:18+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  21 дек. 2020 г.
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.2351a86c.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/py-ios-device/0.23/">
+                <p class="release__version">
+                  0.23
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2020-12-21T09:12:00+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  21 дек. 2020 г.
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.2351a86c.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/py-ios-device/0.22/">
+                <p class="release__version">
+                  0.22
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2020-12-21T08:46:52+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  21 дек. 2020 г.
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.2351a86c.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/py-ios-device/0.21/">
+                <p class="release__version">
+                  0.21
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2020-12-21T08:44:05+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  21 дек. 2020 г.
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.2351a86c.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/py-ios-device/0.20/">
+                <p class="release__version">
+                  0.20
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2020-12-21T08:39:10+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  21 дек. 2020 г.
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.2351a86c.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/py-ios-device/0.19/">
+                <p class="release__version">
+                  0.19
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2020-12-21T08:38:13+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  21 дек. 2020 г.
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.2351a86c.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/py-ios-device/0.18/">
+                <p class="release__version">
+                  0.18
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2020-12-21T08:36:19+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  21 дек. 2020 г.
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.2351a86c.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/py-ios-device/0.17/">
+                <p class="release__version">
+                  0.17
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2020-12-21T08:31:57+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  21 дек. 2020 г.
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.2351a86c.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/py-ios-device/0.16/">
+                <p class="release__version">
+                  0.16
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2020-12-21T07:32:34+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  21 дек. 2020 г.
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.2351a86c.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/py-ios-device/0.15/">
+                <p class="release__version">
+                  0.15
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2020-12-21T06:55:17+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  21 дек. 2020 г.
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.2351a86c.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/py-ios-device/0.14/">
+                <p class="release__version">
+                  0.14
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2020-12-21T06:46:39+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  21 дек. 2020 г.
+</time>
+                </p>
+              </a>
+            </div>
+            
+            
+            <div class="release release--oldest">
+              <div class="release__meta">
+                
+              </div>
+
+              <div class="release__graphic">
+                
+                <div class="release__line"></div>
+                
+                
+                <img class="release__node" alt="" src="https://pypi.org/static/images/white-cube.2351a86c.svg">
+                
+              </div>
+
+              <a class="card release__card" href="/project/py-ios-device/0.13/">
+                <p class="release__version">
+                  0.13
+                  
+                  
+                </p>
+                <p class="release__version-date">
+                  <time datetime="2020-12-21T06:30:58+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  21 дек. 2020 г.
+</time>
+                </p>
+              </a>
+            </div>
+            
+          </div>
+        </div>
+
+        
+          
+          <div id="files" data-project-tabs-target="content" class="vertical-tabs__content" role="tabpanel" aria-labelledby="files-tab mobile-files-tab" tabindex="-1">
+            <h2 class="page-title">Загрузка файлов</h2>
+            <p>Загрузите файл для вашей платформы. Если вы не уверены, какой выбрать, узнайте больше об <a href="https://packaging.python.org/installing/" title="Внешняя ссылка" target="_blank" rel="noopener">установке пакетов</a>.</p>
+            <h3>
+              Source Distribution
+            </h3>
+
+            
+              
+    <div class="file">
+      <div class="file__graphic">
+        <i class="far fa-file" aria-hidden="true"></i>
+      </div>
+
+      <div class="card file__card">
+        <a href="https://files.pythonhosted.org/packages/68/eb/0579ff741ec3508ca546ae9eb4ec9f5792f881c8c8a5f90e9e4e529004db/py_ios_device-2.3.35.tar.gz">
+          py_ios_device-2.3.35.tar.gz
+        </a>
+        (153.6 kB
+        <a href="#copy-hash-modal-08106622-0bab-4ad3-801e-6b1ee461d6f4">view hashes</a>)
+        <p class="file__meta">
+          Uploaded <time datetime="2023-09-08T11:09:27+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  8 сент. 2023 г.
+</time>
+          
+          
+          <code>source</code>
+          
+          
+        </p>
+      </div>
+    </div>
+  
+            
+
+            
+            <h3>
+              Built Distribution
+            </h3>
+
+            
+    <div class="file">
+      <div class="file__graphic">
+        <i class="far fa-file" aria-hidden="true"></i>
+      </div>
+
+      <div class="card file__card">
+        <a href="https://files.pythonhosted.org/packages/de/c4/4bcbcfe645c747e76af1fc52e567a0fc2b218c6c605ec87c96588840cee9/py_ios_device-2.3.35-py3-none-any.whl">
+          py_ios_device-2.3.35-py3-none-any.whl
+        </a>
+        (176.3 kB
+        <a href="#copy-hash-modal-bbd42699-c35a-487b-893e-4a1259f4abca">view hashes</a>)
+        <p class="file__meta">
+          Uploaded <time datetime="2023-09-08T11:09:24+0000" data-controller="localized-time" data-localized-time-relative="true" data-localized-time-show-time="false">
+  8 сент. 2023 г.
+</time>
+          
+          
+          <code>py3</code>
+          
+          
+        </p>
+      </div>
+    </div>
+  
+            
+          </div>
+
+          
+          <div id="copy-hash-modal-08106622-0bab-4ad3-801e-6b1ee461d6f4" class="modal modal--wide">
+  <div class="modal__content" role="dialog">
+    <a href="#modal-close" title="Закрыть" class="modal__close">
+      <i class="fa fa-times" aria-hidden="true"></i>
+      <span class="sr-only">Закрыть</span>
+    </a>
+    <div class="modal__body">
+      <h3 class="modal__title">
+        <a href="https://pip.pypa.io/en/stable/topics/secure-installs/#hash-checking-mode" title="Внешняя ссылка" target="_blank" rel="noopener">Хеши</a> для py_ios_device-2.3.35.tar.gz
+      </h3>
+      <table class="table table--hashes">
+        <caption class="sr-only">Хеши для py_ios_device-2.3.35.tar.gz</caption>
+        <thead>
+          <tr>
+            <th scope="col">Алгоритм</th>
+            <th scope="col">Хеш-дайджест</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr data-controller="clipboard">
+            <th scope="row">SHA256</th>
+            <td><code data-clipboard-target="source">2eabf1d55e44a8908d9593fc7d2a3a06568ccc86a6d2b0aadea53d0422782d0f</code></td>
+            <td class="table__align-right">
+              <button type="button" class="button button--small copy-tooltip copy-tooltip-w" data-action="clipboard#copy" data-clipboard-target="tooltip" data-clipboard-tooltip-value="Скопировать в буфер обмена">
+                Копировать
+              </button>
+            </td>
+          </tr>
+          <tr data-controller="clipboard">
+            <th scope="row">MD5</th>
+            <td><code data-clipboard-target="source">2a845f5a2fb163de1af304bbd88b3490</code></td>
+            <td class="table__align-right">
+              <button type="button" class="button button--small copy-tooltip copy-tooltip-w" data-action="clipboard#copy" data-clipboard-target="tooltip" data-clipboard-tooltip-value="Скопировать в буфер обмена">
+                Копировать
+              </button>
+            </td>
+          </tr>
+          <tr data-controller="clipboard">
+            <th scope="row">BLAKE2b-256</th>
+            <td><code data-clipboard-target="source">68eb0579ff741ec3508ca546ae9eb4ec9f5792f881c8c8a5f90e9e4e529004db</code></td>
+            <td class="table__align-right">
+              <button type="button" class="button button--small copy-tooltip copy-tooltip-w" data-action="clipboard#copy" data-clipboard-target="tooltip" data-clipboard-tooltip-value="Скопировать в буфер обмена">
+                Копировать
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="modal__footer">
+      <a href="#modal-close" class="button button--primary modal__action">Закрыть</a>
+    </div>
+  </div>
+</div>
+          
+          <div id="copy-hash-modal-bbd42699-c35a-487b-893e-4a1259f4abca" class="modal modal--wide">
+  <div class="modal__content" role="dialog">
+    <a href="#modal-close" title="Закрыть" class="modal__close">
+      <i class="fa fa-times" aria-hidden="true"></i>
+      <span class="sr-only">Закрыть</span>
+    </a>
+    <div class="modal__body">
+      <h3 class="modal__title">
+        <a href="https://pip.pypa.io/en/stable/topics/secure-installs/#hash-checking-mode" title="Внешняя ссылка" target="_blank" rel="noopener">Хеши</a> для py_ios_device-2.3.35-py3-none-any.whl
+      </h3>
+      <table class="table table--hashes">
+        <caption class="sr-only">Хеши для py_ios_device-2.3.35-py3-none-any.whl</caption>
+        <thead>
+          <tr>
+            <th scope="col">Алгоритм</th>
+            <th scope="col">Хеш-дайджест</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr data-controller="clipboard">
+            <th scope="row">SHA256</th>
+            <td><code data-clipboard-target="source">82f80c63dbdbbee9c90af5a001e9bf6eddc1587232d4bbb10df07dc6177f3b56</code></td>
+            <td class="table__align-right">
+              <button type="button" class="button button--small copy-tooltip copy-tooltip-w" data-action="clipboard#copy" data-clipboard-target="tooltip" data-clipboard-tooltip-value="Скопировать в буфер обмена">
+                Копировать
+              </button>
+            </td>
+          </tr>
+          <tr data-controller="clipboard">
+            <th scope="row">MD5</th>
+            <td><code data-clipboard-target="source">a8046e9658d7a77e3395b29abf24175d</code></td>
+            <td class="table__align-right">
+              <button type="button" class="button button--small copy-tooltip copy-tooltip-w" data-action="clipboard#copy" data-clipboard-target="tooltip" data-clipboard-tooltip-value="Скопировать в буфер обмена">
+                Копировать
+              </button>
+            </td>
+          </tr>
+          <tr data-controller="clipboard">
+            <th scope="row">BLAKE2b-256</th>
+            <td><code data-clipboard-target="source">dec44bcbcfe645c747e76af1fc52e567a0fc2b218c6c605ec87c96588840cee9</code></td>
+            <td class="table__align-right">
+              <button type="button" class="button button--small copy-tooltip copy-tooltip-w" data-action="clipboard#copy" data-clipboard-target="tooltip" data-clipboard-tooltip-value="Скопировать в буфер обмена">
+                Копировать
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="modal__footer">
+      <a href="#modal-close" class="button button--primary modal__action">Закрыть</a>
+    </div>
+  </div>
+</div>
+          
+
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+    </main>
+
+    <footer class="footer">
+      <div class="footer__logo">
+        <img src="/static/images/white-cube.2351a86c.svg" alt="" class="-js-white-cube">
+      </div>
+
+      <div class="footer__menus">
+        <div class="footer__menu">
+          <h2>Помощь</h2>
+          <nav aria-label="Помощь с навигацией">
+            <ul>
+              <li><a href="https://packaging.python.org/installing/" title="Внешняя ссылка" target="_blank" rel="noopener">Установка пакетов</a></li>
+              <li><a href="https://packaging.python.org/tutorials/packaging-projects/" title="Внешняя ссылка" target="_blank" rel="noopener">Загрузка пакетов</a></li>
+              <li><a href="https://packaging.python.org/" title="Внешняя ссылка" target="_blank" rel="noopener">Руководство пользователя</a></li>
+              <li><a href="https://www.python.org/dev/peps/pep-0541/" title="Внешняя ссылка" target="_blank" rel="noopener">Project name retention</a></li>
+              <li><a href="/help/">Часто задаваемые вопросы</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <div class="footer__menu">
+          <h2>О PyPI</h2>
+          <nav aria-label="Навигация по блоку ссылок «О PyPI»">
+            <ul>
+              <li><a href="https://twitter.com/PyPI" title="Внешняя ссылка" target="_blank" rel="noopener">PyPI в Twitter</a></li>
+              <li><a href="https://dtdg.co/pypi" title="Внешняя ссылка" target="_blank" rel="noopener">Панель мониторинга инфраструктуры</a></li>
+              <li><a href="/stats/">Статистика</a></li>
+              <li><a href="/trademarks/">Логотипы и товарные знаки</a></li>
+              <li><a href="/sponsors/">Наши спонсоры</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <div class="footer__menu">
+          <h2>Внесение вклада в PyPI</h2>
+          <nav aria-label="Навигация по блоку ссылок «Внесение вклада в PyPI»">
+            <ul>
+              <li><a href="/help/#feedback">Программные ошибки и обратная связь</a></li>
+              <li><a href="https://github.com/pypi/warehouse" title="Внешняя ссылка" target="_blank" rel="noopener">Внесение вклада на GitHub’е</a></li>
+              <li><a href="https://hosted.weblate.org/projects/pypa/warehouse/" title="Внешняя ссылка" target="_blank" rel="noopener">Перевод PyPI</a></li>
+              <li><a href="/sponsors/">Спонсор PyPI</a></li>
+              <li><a href="https://github.com/pypi/warehouse/graphs/contributors" title="Внешняя ссылка" target="_blank" rel="noopener">Вклад в разработку</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <div class="footer__menu">
+          <h2>Использование PyPI</h2>
+          <nav aria-label="Навигация по блоку ссылок «Использование PyPI»">
+            <ul>
+              <li><a href="https://github.com/pypa/.github/blob/main/CODE_OF_CONDUCT.md" title="Внешняя ссылка" target="_blank" rel="noopener">Нормы поведения</a></li>
+              <li><a href="/security/">Сообщить о проблеме безопасности</a></li>
+              <li><a href="https://www.python.org/privacy/" title="Внешняя ссылка" target="_blank" rel="noopener">Политика конфиденциальности</a></li>
+              <li><a href="/policy/terms-of-use/">Условия пользования</a></li>
+              <li><a href="/policy/acceptable-use-policy/">Политика допустимого использования</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+
+      <hr class="footer__divider">
+
+      <div class="footer__text">
+        
+        <p>Статус:<a href="https://status.python.org/" title="Внешняя ссылка" target="_blank" rel="noopener">
+          <span data-statuspage-domain="https://2p66nmmycsj3.statuspage.io">все системы в рабочем состоянии</span></a>
+        </p>
+        
+        <p>
+          Разработано и поддерживается сообществом Python’а для сообщества Python’а.
+          <br>
+          <a href="https://donate.pypi.org">Пожертвуйте сегодня!</a>
+        </p>
+        <p>
+          
+PyPI", "Python Package Index" и логотипы блоков являются зарегистрированными <a href="/trademarks/">товарными знаками</a> <a href="https://python.org/psf-landing" target="_blank" rel="noopener">Python Software Foundation</a>.
+<br>
+        </p>
+        <p>
+          © 2023 <a href="https://www.python.org/psf-landing/" title="Внешняя ссылка" target="_blank" rel="noopener">Python Software Foundation</a><br>
+          <a href="/sitemap/">Карта сайта</a>
+        </p>
+      </div>
+
+      <div class="centered hide-on-desktop">
+        <button type="button" class="button button--switch-to-desktop hidden" data-viewport-toggle-target="switchToDesktop" data-action="viewport-toggle#switchToDesktop">
+          Переключиться на настольную версию
+        </button>
+      </div>
+    </footer>
+
+
+    <div class="language-switcher">
+      <form action="/locale/">
+        <ul>
+          
+          <li>
+            <button
+              
+              name="locale_id" value="en" type="submit"
+            >
+              English
+            </button>
+          </li>
+          
+          <li>
+            <button
+              
+              name="locale_id" value="es" type="submit"
+            >
+              español
+            </button>
+          </li>
+          
+          <li>
+            <button
+              
+              name="locale_id" value="fr" type="submit"
+            >
+              français
+            </button>
+          </li>
+          
+          <li>
+            <button
+              
+              name="locale_id" value="ja" type="submit"
+            >
+              日本語
+            </button>
+          </li>
+          
+          <li>
+            <button
+              
+              name="locale_id" value="pt_BR" type="submit"
+            >
+              português (Brasil)
+            </button>
+          </li>
+          
+          <li>
+            <button
+              
+              name="locale_id" value="uk" type="submit"
+            >
+              українська
+            </button>
+          </li>
+          
+          <li>
+            <button
+              
+              name="locale_id" value="el" type="submit"
+            >
+              Ελληνικά
+            </button>
+          </li>
+          
+          <li>
+            <button
+              
+              name="locale_id" value="de" type="submit"
+            >
+              Deutsch
+            </button>
+          </li>
+          
+          <li>
+            <button
+              
+              name="locale_id" value="zh_Hans" type="submit"
+            >
+              中文 (简体)
+            </button>
+          </li>
+          
+          <li>
+            <button
+              
+              name="locale_id" value="zh_Hant" type="submit"
+            >
+              中文 (繁體)
+            </button>
+          </li>
+          
+          <li>
+            <button
+              
+              class="language-switcher__selected"
+              
+              name="locale_id" value="ru" type="submit"
+            >
+              русский
+            </button>
+          </li>
+          
+          <li>
+            <button
+              
+              name="locale_id" value="he" type="submit"
+            >
+              עברית
+            </button>
+          </li>
+          
+          <li>
+            <button
+              
+              name="locale_id" value="eo" type="submit"
+            >
+              esperanto
+            </button>
+          </li>
+          
+        </ul>
+      </form>
+    </div>
+
+
+    <div class="sponsors">
+  <p class="sponsors__title">Supported by</p>
+  <div class="sponsors__divider"></div>
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+      
+      
+        <a class="sponsors__sponsor" target="_blank" rel="noopener" href="https://aws.amazon.com/">
+          <img class=sponsors__image src="https://pypi-camo.global.ssl.fastly.net/ed7074cadad1a06f56bc520ad9bd3e00d0704c5b/68747470733a2f2f73746f726167652e676f6f676c65617069732e636f6d2f707970692d6173736574732f73706f6e736f726c6f676f732f6177732d77686974652d6c6f676f2d7443615473387a432e706e67" alt=AWS loading=lazy>
+          <span class="sponsors__name">AWS</span>
+          <span class="sponsors__service">
+          
+          
+            Cloud computing and Security Sponsor
+          
+          </span>
+        </a>
+      
+    
+  
+    
+    
+  
+    
+    
+      
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+      
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+      
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+      
+      
+        <a class="sponsors__sponsor" target="_blank" rel="noopener" href="https://www.datadoghq.com/">
+          <img class=sponsors__image src="https://pypi-camo.global.ssl.fastly.net/8855f7c063a3bdb5b0ce8d91bfc50cf851cc5c51/68747470733a2f2f73746f726167652e676f6f676c65617069732e636f6d2f707970692d6173736574732f73706f6e736f726c6f676f732f64617461646f672d77686974652d6c6f676f2d6668644c4e666c6f2e706e67" alt=Datadog loading=lazy>
+          <span class="sponsors__name">Datadog</span>
+          <span class="sponsors__service">
+          
+          
+            Monitoring
+          
+          </span>
+        </a>
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+      
+      
+    
+  
+    
+    
+      
+      
+    
+  
+    
+    
+  
+    
+    
+      
+      
+        <a class="sponsors__sponsor" target="_blank" rel="noopener" href="https://www.fastly.com/">
+          <img class=sponsors__image src="https://pypi-camo.global.ssl.fastly.net/df6fe8829cbff2d7f668d98571df1fd011f36192/68747470733a2f2f73746f726167652e676f6f676c65617069732e636f6d2f707970692d6173736574732f73706f6e736f726c6f676f732f666173746c792d77686974652d6c6f676f2d65684d3077735f6f2e706e67" alt=Fastly loading=lazy>
+          <span class="sponsors__name">Fastly</span>
+          <span class="sponsors__service">
+          
+          
+            CDN
+          
+          </span>
+        </a>
+      
+    
+  
+    
+    
+  
+    
+    
+      
+      
+        <a class="sponsors__sponsor" target="_blank" rel="noopener" href="https://careers.google.com/">
+          <img class=sponsors__image src="https://pypi-camo.global.ssl.fastly.net/420cc8cf360bac879e24c923b2f50ba7d1314fb0/68747470733a2f2f73746f726167652e676f6f676c65617069732e636f6d2f707970692d6173736574732f73706f6e736f726c6f676f732f676f6f676c652d77686974652d6c6f676f2d616734424e3774332e706e67" alt=Google loading=lazy>
+          <span class="sponsors__name">Google</span>
+          <span class="sponsors__service">
+          
+          
+            Download Analytics
+          
+          </span>
+        </a>
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+      
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+      
+      
+        <a class="sponsors__sponsor" target="_blank" rel="noopener" href="https://www.python.org/psf/sponsors/#microsoft">
+          <img class=sponsors__image src="https://pypi-camo.global.ssl.fastly.net/524d1ce72f7772294ca4c1fe05d21dec8fa3f8ea/68747470733a2f2f73746f726167652e676f6f676c65617069732e636f6d2f707970692d6173736574732f73706f6e736f726c6f676f732f6d6963726f736f66742d77686974652d6c6f676f2d5a443172685444462e706e67" alt=Microsoft loading=lazy>
+          <span class="sponsors__name">Microsoft</span>
+          <span class="sponsors__service">
+          
+          
+            PSF Sponsor
+          
+          </span>
+        </a>
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+      
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+      
+      
+        <a class="sponsors__sponsor" target="_blank" rel="noopener" href="https://www.pingdom.com/">
+          <img class=sponsors__image src="https://pypi-camo.global.ssl.fastly.net/d01053c02f3a626b73ffcb06b96367fdbbf9e230/68747470733a2f2f73746f726167652e676f6f676c65617069732e636f6d2f707970692d6173736574732f73706f6e736f726c6f676f732f70696e67646f6d2d77686974652d6c6f676f2d67355831547546362e706e67" alt=Pingdom loading=lazy>
+          <span class="sponsors__name">Pingdom</span>
+          <span class="sponsors__service">
+          
+          
+            Monitoring
+          
+          </span>
+        </a>
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+      
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+      
+      
+        <a class="sponsors__sponsor" target="_blank" rel="noopener" href="https://getsentry.com/for/python">
+          <img class=sponsors__image src="https://pypi-camo.global.ssl.fastly.net/67af7117035e2345bacb5a82e9aa8b5b3e70701d/68747470733a2f2f73746f726167652e676f6f676c65617069732e636f6d2f707970692d6173736574732f73706f6e736f726c6f676f732f73656e7472792d77686974652d6c6f676f2d4a2d6b64742d706e2e706e67" alt=Sentry loading=lazy>
+          <span class="sponsors__name">Sentry</span>
+          <span class="sponsors__service">
+          
+          
+            Error logging
+          
+          </span>
+        </a>
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+      
+      
+        <a class="sponsors__sponsor" target="_blank" rel="noopener" href="https://statuspage.io">
+          <img class=sponsors__image src="https://pypi-camo.global.ssl.fastly.net/b611884ff90435a0575dbab7d9b0d3e60f136466/68747470733a2f2f73746f726167652e676f6f676c65617069732e636f6d2f707970692d6173736574732f73706f6e736f726c6f676f732f737461747573706167652d77686974652d6c6f676f2d5467476c6a4a2d502e706e67" alt=StatusPage loading=lazy>
+          <span class="sponsors__name">StatusPage</span>
+          <span class="sponsors__service">
+          
+          
+            Status page
+          
+          </span>
+        </a>
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+</div>
+
+    
+  </body>
+
+</html>
