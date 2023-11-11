@@ -45,6 +45,35 @@ def get_attr_dict():
     #print(myDict)
     return myDict
 
+def get_head_attr_dict():
+    name_column = ['id',
+                   'title',
+                   'url_canonical',
+                   'url_alternate1',
+                   'url_alternate2',
+                   'status',
+                   'category_kod',
+                   'city_kod',
+                   'reg_kod',
+                   'search_filter',
+                   'search_key',
+                   'search_memo',
+                   'search_parametrs_api',
+                   'search_parametrs_web',
+                   'slug_category',
+                   'slug_city',
+                   'slug_reg',
+                   'priceMax',
+                   'priceMin',
+                   ]
+    # listKeys = ['a', 'b', 'c']
+    # listValues = ['apple', 'banana', 'cherry']
+    # myDict = {listKeys[i]: listValues[i] for i in range(0, len(listKeys), 1)}
+    listValues = None
+    myDict = {name_column[i]: listValues for i in range(0, len(name_column), 1)}
+    #print(myDict)
+    return myDict
+
 
 def Parse_slug(url_parse):
     # Разбиваем адрес на составляющие
@@ -75,9 +104,10 @@ def Parse_slug(url_parse):
     print("Parsed Query:", parsed_query)
     print("Fragment:", fragment)
     dict_attr = get_attr_dict()
+    dict_head_attr = get_head_attr_dict()
     print('dict_attr', dict_attr)
-
-
+    print('dict_head_attr', dict_head_attr)
+    #'locationId': ['621540'] = all
 class AvitoScraperHead:
     def __init__(self):
         self.ssl_context = ssl.SSLContext(protocol=ssl.PROTOCOL_TLS_CLIENT)
@@ -181,12 +211,12 @@ class AvitoScraperHead:
         Parse_slug(url_parse)
 
         url_alternate1 = tree.xpath(path_url_alternate1)
-        print('tree.xpath(path_url_alternate1) !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+        print(' \n tree.xpath(path_url_alternate1) \n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
         print(url_alternate1[0])
         url_parse = str(url_alternate1[0])
         Parse_slug(url_parse)
 
-        print('tree.xpath(path_url_alternate2) !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+        print(' \n tree.xpath(path_url_alternate2) \n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
         url_alternate2 = tree.xpath(path_url_alternate2)
         print(url_alternate2[0])
         #        print(tree.xpath(path_url_alternate2))
@@ -243,8 +273,10 @@ class AvitoScraperHead:
 
 if __name__ == '__main__':
     head_list = AvitoScraperHead()
-    url_get = "https://www.avito.ru/rostovskaya_oblast/bytovaya_elektronika?cd=1&q=e-mu+1616"
-    head_list.get_url(url_get)  # parse_xml()
+    url_get = "https://www.avito.ru/all?cd=1&d=1&f=ASgCAgECAUXGmgwXeyJmcm9tIjoxMDAwLCJ0byI6ODAwMH0&q=e-mu+1616&s=1"                 # 'locationId': ['621540']
+    url_get2 = 'https://www.avito.ru/rostovskaya_oblast?cd=1&d=1&f=ASgCAgECAUXGmgwXeyJmcm9tIjoxMDAwLCJ0byI6ODAwMH0&q=e-mu+1616&s=1' # 'locationId': ['651110']
+    url_get3 = 'https://www.avito.ru/rostovskaya_oblast_aksay/bytovaya_elektronika?cd=1&d=1&q=e-mu+1616&s=1'                        # 'locationId': ['651130']
+    head_list.get_url(url_get3)  # parse_xml()
     # start_main()
 ################################################################################################
 '''

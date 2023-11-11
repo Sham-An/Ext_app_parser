@@ -134,27 +134,17 @@ class MainWindow(QtWidgets.QMainWindow, Ui_TaskEDIT):  # Ui_MainWindow):
             else:
                 url_str = str(url)
             parsed_url = urlparse(url_str)
-            url_parse = 'android-app://com.avito.android/ru.avito/1/items?categoryId=14&locationId=651110&priceMax=7000&priceMin=2000&query=%D1%81%D0%BA%D1%83%D1%82%D0%B5%D1%80'
-            parsed_url_head = urlparse(url_parse)
-            print('current.row()', current.row(), current.column())
 
-            print(parsed_url_head )
-            print(f'parsed_url_head.query = {parsed_url_head.query}')
-            query_dict_head = parse_qs(parsed_url_head.query)
-            print(f'query_dict_head = {query_dict_head} \n {query_dict_head["locationId"][0]}')
+            print('current.row()', current.row(), current.column())
 
             self.lineEdit.setText(url)
             self.Path_scheme.setText(parsed_url.scheme)
             self.Path_host.setText(parsed_url.netloc)
-            # url_parse = setText(parsed_url.path)
             self.Path_parts.setText(parsed_url.path)
             url_parse = self.Path_parts.text()
-            # print(url_parse)
             path_os = os.path.normpath(url_parse)
             split_path = path_os.split(os.sep)
             print("parsed_url ", len(split_path), " @@@@@@", split_path)
-            # print(len(split_path))
-            # print(split_path)
             # head_tail = os.path.split(url_parse)
             # self.Path_local.setText(split_path[1])
             if len(split_path) == 2:
@@ -180,7 +170,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_TaskEDIT):  # Ui_MainWindow):
             print(f'parsed_url.query = {parsed_url.query}') #print(query_dict)
             for param in query_dict:
                 self.list_Query.addItem("{}: {}".format(param, query_dict[param][0]))
-                self.Task_view_text.setText(str(parsed_url_head))
+                self.Task_view_text.setText(str(url))
                 #self.Task_view_text.setText("TTTEXTTT") #(parsed_url.fragment)
             #self.Task_view_text.setText(url)  # str(current.row()))#(parsed_url.fragment)
 
