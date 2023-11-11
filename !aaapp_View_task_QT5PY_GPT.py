@@ -15,8 +15,12 @@ import psycopg2
 from config_PySide import params
 from urllib.parse import urlparse, parse_qs
 from pandas import DataFrame
+import Lib.app_get_headers as head_get
 
 url_str2 = "ru.avito://1/searchSubscription/new/byParams?description=%D0%9C%D0%BE%D1%82%D0%BE%D1%86%D0%B8%D0%BA%D0%BB%D1%8B+%D0%B8+%D0%BC%D0%BE%D1%82%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%2C+%D0%9D%D0%BE%D0%B2%D0%BE%D1%81%D0%B8%D0%B1%D0%B8%D1%80%D1%81%D0%BA%2C+%D0%9E%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C+%D0%BD%D0%B0+%D0%BA%D0%B0%D1%80%D1%82%D0%B5%2C+suzuki%2Bgsx-r%2C+%D0%9C%D0%BE%D1%82%D0%BE%D1%86%D0%B8%D0%BA%D0%BB%D1%8B%2C+%D0%91%2F%D1%83%2C+%D0%A2%D0%BE%D0%BB%D1%8C%D0%BA%D0%BE+%D1%81+%D1%84%D0%BE%D1%82%D0%BE%2C+%D0%A6%D0%B5%D0%BD%D0%B0+100%C2%A0000%C2%A0%E2%80%94%C2%A0200%C2%A0000%C2%A0%E2%82%BD&filter%5BcategoryId%5D=14&filter%5BlocationId%5D=641780&filter%5Bparams%5D%5B110275%5D=426645&filter%5Bparams%5D%5B30%5D=4969&filter%5BpriceMax%5D=200000&filter%5BpriceMin%5D=100000&filter%5Bquery%5D=suzuki%2Bgsx-r&filter%5BsearchRadius%5D=200&filter%5BwithImagesOnly%5D=1&pushFrequency=3&pushFrequencyOptions%5B0%5D%5Bid%5D=1&pushFrequencyOptions%5B0%5D%5Btitle%5D=%D0%A1%D1%80%D0%B0%D0%B7%D1%83&pushFrequencyOptions%5B1%5D%5Bid%5D=2&pushFrequencyOptions%5B1%5D%5Btitle%5D=%D0%A3%D1%82%D1%80%D0%BE%D0%BC&pushFrequencyOptions%5B2%5D%5Bid%5D=3&pushFrequencyOptions%5B2%5D%5Btitle%5D=%D0%92%D0%B5%D1%87%D0%B5%D1%80%D0%BE%D0%BC&pushFrequencyOptions%5B3%5D%5Bid%5D=0&pushFrequencyOptions%5B3%5D%5Btitle%5D=%D0%9D%D0%B5+%D0%BF%D1%80%D0%B8%D1%81%D1%8B%D0%BB%D0%B0%D1%82%D1%8C&title=%D0%9F%D0%BE%D0%B4%D0%BF%D0%B8%D1%81%D0%BA%D0%B0+%D0%BD%D0%B0+%D0%BF%D0%BE%D0%B8%D1%81%D0%BA"
+
+class Parts_union():
+    pass
 
 class MainWindow(QtWidgets.QMainWindow, Ui_TaskEDIT):  # Ui_MainWindow):
     def __init__(self):
@@ -42,7 +46,19 @@ class MainWindow(QtWidgets.QMainWindow, Ui_TaskEDIT):  # Ui_MainWindow):
         selection_model = self.View_Task.selectionModel()
         selection_model.currentChanged.connect(self.on_selection_change)
         self.load_table_from_file("table_data.txt")
-        #self.get_task()
+        self.get_task()
+
+    def check_task(self):
+        # Выполняем запрос к базе данных
+        query_all_task = "SELECT * FROM aparser_task"
+        self.cursor.execute(query_all_task)
+        # Получаем данные и имена столбцов и заполняем модель таблицы
+        rows = self.cursor.fetchall()
+        head_list = head_get.AvitoScraperHead()
+        for row in rows:
+            print('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! check', row[2])
+            url2 = str(row[2])
+            head_list.get_url(url2)
 
     def save_table_to_file(self, file_name):
         table_data = {"column_names": self.get_column_names(), "data": self.get_table_data()}
@@ -118,49 +134,57 @@ class MainWindow(QtWidgets.QMainWindow, Ui_TaskEDIT):  # Ui_MainWindow):
             else:
                 url_str = str(url)
             parsed_url = urlparse(url_str)
-            #parsed_url = urlparse(url_str2)
+            url_parse = 'android-app://com.avito.android/ru.avito/1/items?categoryId=14&locationId=651110&priceMax=7000&priceMin=2000&query=%D1%81%D0%BA%D1%83%D1%82%D0%B5%D1%80'
+            parsed_url_head = urlparse(url_parse)
+            print('current.row()', current.row(), current.column())
+
+            print(parsed_url_head )
+            print(f'parsed_url_head.query = {parsed_url_head.query}')
+            query_dict_head = parse_qs(parsed_url_head.query)
+            print(f'query_dict_head = {query_dict_head} \n {query_dict_head["locationId"][0]}')
 
             self.lineEdit.setText(url)
             self.Path_scheme.setText(parsed_url.scheme)
             self.Path_host.setText(parsed_url.netloc)
-            #url_parse = setText(parsed_url.path)
+            # url_parse = setText(parsed_url.path)
             self.Path_parts.setText(parsed_url.path)
             url_parse = self.Path_parts.text()
-            #print(url_parse)
+            # print(url_parse)
             path_os = os.path.normpath(url_parse)
             split_path = path_os.split(os.sep)
-            print("parsed_url ", len(split_path) , " @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+            print("parsed_url ", len(split_path), " @@@@@@", split_path)
             # print(len(split_path))
             # print(split_path)
-            #head_tail = os.path.split(url_parse)
-            #self.Path_local.setText(split_path[1])
+            # head_tail = os.path.split(url_parse)
+            # self.Path_local.setText(split_path[1])
             if len(split_path) == 2:
                 self.Path_local.setText(split_path[1])
-                #self.Path_cat1.setText(split_path[2])
-                #self.Path_local.setText(split_path[1])
-                #print(split_path[1],'22222222222222222222222222222222')
+                # self.Path_cat1.setText(split_path[2])
+                # self.Path_local.setText(split_path[1])
+                # print(split_path[1],'22222222222222222222222222222222')
             elif len(split_path) == 3:
                 self.Path_local.setText(split_path[1])
                 self.Path_cat1.setText(split_path[2])
-                #self.Path_cat2.setText(split_path[3])
-                #print('33333333333333333333333333333333')
+                # self.Path_cat2.setText(split_path[3])
+                # print('33333333333333333333333333333333')
             elif len(split_path) > 3:
                 self.Path_local.setText(split_path[1])
                 self.Path_cat1.setText(split_path[2])
                 self.Path_cat2.setText(split_path[3])
-                #print('4444444444444444444444444444444444')
-
-
-            #self.Path_cat1.setText(split_path[2])
-            #self.Path_cat2.setText(split_path[3])
+                # print('4444444444444444444444444444444444')
+            # self.Path_cat1.setText(split_path[2])
+            # self.Path_cat2.setText(split_path[3])
             self.list_Query.clear()
-            print('@@@@@@@@@@@parsed_url.query')
-            print(parsed_url.query)
+            print(parsed_url) #print(parsed_url.query)
             query_dict = parse_qs(parsed_url.query)
-            print(query_dict)
+            print(f'parsed_url.query = {parsed_url.query}') #print(query_dict)
             for param in query_dict:
                 self.list_Query.addItem("{}: {}".format(param, query_dict[param][0]))
-                self.Task_view_text.setText("TTTEXTTT")#(parsed_url.fragment)
+                self.Task_view_text.setText(str(parsed_url_head))
+                #self.Task_view_text.setText("TTTEXTTT") #(parsed_url.fragment)
+            #self.Task_view_text.setText(url)  # str(current.row()))#(parsed_url.fragment)
+
+
 
     def closeEvent(self, event):
         # Закрываем соединение с базой данных
