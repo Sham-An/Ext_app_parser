@@ -1,5 +1,5 @@
 import main_app_headers as head1
-import app_get_headers as head2
+import aapp_get_headers as head2
 
 head_list1 = head1.AvitoScraperHead()
 head_list2 = head2.AvitoScraperHead()

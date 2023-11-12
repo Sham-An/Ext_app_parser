@@ -144,23 +144,32 @@ class MainWindow(QtWidgets.QMainWindow, Ui_TaskEDIT):  # Ui_MainWindow):
             url_parse = self.Path_parts.text()
             path_os = os.path.normpath(url_parse)
             split_path = path_os.split(os.sep)
+            View_text = str(f'url = {url}\n \n')
             print("parsed_url ", len(split_path), " @@@@@@", split_path)
+            View_text += str(f'split_path = {split_path}\n')
             # head_tail = os.path.split(url_parse)
             # self.Path_local.setText(split_path[1])
             if len(split_path) == 2:
                 self.Path_local.setText(split_path[1])
+                View_text += str(f'Path_local = {split_path[1]}\n')
                 # self.Path_cat1.setText(split_path[2])
                 # self.Path_local.setText(split_path[1])
                 # print(split_path[1],'22222222222222222222222222222222')
             elif len(split_path) == 3:
                 self.Path_local.setText(split_path[1])
                 self.Path_cat1.setText(split_path[2])
+                View_text += str(f'Path_local = {split_path[1]}\n'
+                                 f'Path_cat1 = {split_path[2]}\n')
                 # self.Path_cat2.setText(split_path[3])
                 # print('33333333333333333333333333333333')
             elif len(split_path) > 3:
                 self.Path_local.setText(split_path[1])
                 self.Path_cat1.setText(split_path[2])
                 self.Path_cat2.setText(split_path[3])
+                View_text += str(f'Path_local = {split_path[1]}\n'
+                                 f'Path_cat1 = {split_path[2]}\n'
+                                 f'Path_cat2 = {split_path[3]}\n')
+
                 # print('4444444444444444444444444444444444')
             # self.Path_cat1.setText(split_path[2])
             # self.Path_cat2.setText(split_path[3])
@@ -168,9 +177,10 @@ class MainWindow(QtWidgets.QMainWindow, Ui_TaskEDIT):  # Ui_MainWindow):
             print(parsed_url) #print(parsed_url.query)
             query_dict = parse_qs(parsed_url.query)
             print(f'parsed_url.query = {parsed_url.query}') #print(query_dict)
+            #View_text= str(f'url = {url}')
             for param in query_dict:
                 self.list_Query.addItem("{}: {}".format(param, query_dict[param][0]))
-                self.Task_view_text.setText(str(url))
+                self.Task_view_text.setText(View_text)
                 #self.Task_view_text.setText("TTTEXTTT") #(parsed_url.fragment)
             #self.Task_view_text.setText(url)  # str(current.row()))#(parsed_url.fragment)
 
