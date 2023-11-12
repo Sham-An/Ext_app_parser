@@ -42,7 +42,7 @@ xpath_mapping = {
     'path_url_alternate1': './/head//link[@rel="alternate"]//@href',
     'path_url_alternate2': './/head//link[substring(@href,1,7)="android"]//@href',
     'path_url_alternate3': './/head//link[substring(@href,1,7)="ios-app"]//@href',
-    'path_title': './/div[substring(@class,1,13) ="iva-item-desc"]//text()',
+    #КОСЯК РАЗОБРАТЬСЯ 'path_title': './/div[substring(@class,1,13) ="iva-item-desc"]//text()',
     'path_name': './/h3[@itemprop="name"]/text()',
     'path_descrip': './/preceding-sibling::div[1]//div/text()',
     #'path_container': './/div[@id="app"]//div[@data-marker="catalog-serp"]',
