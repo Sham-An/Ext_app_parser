@@ -1,101 +1,99 @@
-# from urllib.parse import urlparse, parse_qs
 import httpx
 from lxml import html
 from urllib.parse import urlparse, parse_qs
 from config import get_ssl_context, xpath_mapping, CIPHERS, avito_key, name_column_1, name_column_2, url_get, url_get1, \
     url_get2, url_get3
 
-
 class AvitoScraperHead:
     def __init__(self):
-        #############################################
         self.ssl_context = get_ssl_context()
-        self.key = avito_key  # 'af0deccbgcgidddjgnvljitntccdduijhdinfgjgfjir'
+        self.key = avito_key
         self.ssl_context.set_ciphers(CIPHERS)
-        ############################################
 
     def get_attr_dict(self):
-        my_dict = {name: None for name in name_column_1}
-        return my_dict
+        return {name: None for name in name_column_1}
 
     def get_head_attr_dict(self):
-        my_dict = {name: None for name in name_column_2}
-        return my_dict
+        return {name: None for name in name_column_2}
 
     def parse_slug(self, url_parse):
         parsed_url = urlparse(url_parse[0])
-        scheme = parsed_url.scheme
-        netloc = parsed_url.netloc
-        path = parsed_url.path
         path_parts = parsed_url.path.split("/")
-        params = parsed_url.params
-        query = parsed_url.query
-        fragment = parsed_url.fragment
-        parsed_query = parse_qs(query)
-
-        print(
-            f'    parse_slug: \nScheme: {scheme},  Netloc: {netloc}, Path: {path}, Path parts: {path_parts}, Params: {params}'
-            f'Query: {query}, Parsed Query: {parsed_query}, Fragment: {fragment}\n')
+        parsed_query = parse_qs(parsed_url.query)
+        print(f'    parse_slug: \nScheme: {parsed_url.scheme},  Netloc: {parsed_url.netloc}, Path: {parsed_url.path}, Path parts: {path_parts}, Params: {parsed_url.params}'
+              f'Query: {parsed_url.query}, Parsed Query: {parsed_query}, Fragment: {parsed_url.fragment}\n')
         return parsed_query
-        # dict_attr = self.get_attr_dict()
-        # dict_head_attr = self.get_head_attr_dict()
-        # print('dict_attr', dict_attr)
-        # print('dict_head_attr', dict_head_attr)
 
     def parse_xml(self, resp_text):
-        html_txt = resp_text
-        tree = html.fromstring(html_txt)
+        tree = html.fromstring(resp_text)
         result = {}
+        path_result = {}
+        name_column_1 = [
+            'id', 'title', 'url', 'status', 'category_kod', 'city_kod', 'reg_kod', 'search_filter', 'search_key',
+            'search_memo',
+            'search_parametrs_api', 'search_parametrs_web', 'slug_category', 'slug_city', 'slug_reg', 'priceMax',
+            'priceMin']
 
         for key, xpath in xpath_mapping.items():
-            value = tree.xpath(xpath)
-            result[key] = value
+            result[key] = tree.xpath(xpath)
             print(key, "=====", result[key])
 
+        path_split = ['', 'rostovskaya_oblast', 'mototsikly_i_mototehnika']
+        #path_split = ['', 'rostovskaya_oblast', 'mototsikly_i_mototehnika', 'mopedy_i_skutery-ASgBAgICAUQ82gE']
         url_canonical = result.get('path_url_canonical', None)
-        print(url_canonical)
+
         if url_canonical:
-            # self.parse_slug(url_canonical)
             parsed_url = urlparse(url_canonical[0])
-            print(f"\n \nurl_canonical: {url_canonical}\n parsed_url path.split {parsed_url.path.split('/')}")
-        # dict_head_attr
-        # {'id': None, 'title': None, 'url_canonical': None, 'url_alternate1': None, 'url_alternate2': None,
-        #  'status': None, 'category_kod': None, 'city_kod': None, 'reg_kod': None, 'search_filter': None,
-        #  'search_key': None, 'search_memo': None, 'search_parametrs_api': None, 'search_parametrs_web': None,
-        #  'slug_category': None, 'slug_city': None, 'slug_reg': None, 'priceMax': None, 'priceMin': None}
+            path_split2 = parsed_url.path.split('/')
+            print(path_split2)
+            print(f"\n \nurl_canonical: {url_canonical}\n parsed_url path.split {path_split[1]}\n")
+
+            path_keys = ['slug_city', 'slug_category1', 'slug_category2', 'slug_category3', 'slug_category4']
+            path_result = {}
+
+            for i, key in enumerate(path_keys):
+                path_result[key] = path_split[min(i + 1, len(path_split) - 1)]
+
+            print(f'path_result = \n {path_result}')
+
+        # path_split = ['', 'rostovskaya_oblast', 'mototsikly_i_mototehnika', 'mopedy_i_skutery-ASgBAgICAUQ82gE']
+        # url_canonical = result.get('path_url_canonical', None)
+        # if url_canonical:
+        #     parsed_url = urlparse(url_canonical[0])
+        #     path_split2 = parsed_url.path.split('/')
+        #     print(path_split2)
+        #     print(f"\n \nurl_canonical: {url_canonical}\n parsed_url path.split {path_split[1]}\n")
+        #     #path.split ['', 'rostovskaya_oblast', 'mototsikly_i_mototehnika', 'mopedy_i_skutery-ASgBAgICAUQ82gE']
+        #     path_result['slug_city'] = path_split[1]
+        #     path_result['slug_category1'] = path_split[2]
+        #     path_result['slug_category2'] = path_split[3]
+        #     print(f'path_result = \n {path_result}')
 
         url_alternate1 = result.get('path_url_alternate1', None)
-        #print(f'\nurl_alternate1========={url_alternate1}')
         if url_alternate1:
-            #print(f"url_alternate1: {url_alternate1}")
-            #self.parse_slug(url_alternate1)
             parsed_url = urlparse(url_alternate1[0])
-            print(f"url_alternate1: {url_alternate1}\n parsed_url path.split {parsed_url.path.split('/')}")
-
+            print(f"url_alternate1: {url_alternate1}\n parsed_url path.split {parsed_url.path.split('/')}\n")
+            #path.split ['', 'rostovskaya_oblast', 'mototsikly_i_mototehnika', 'mopedy_i_skutery-ASgBAgICAUQ82gE']
 
         url_alternate2 = result.get('path_url_alternate2', None)
-        print(f'\nurl_alternate2========={url_alternate2}')
-
         if url_alternate2:
-            #print(f"url_alternate2: {url_alternate2}")
-            self.parse_slug(url_alternate2)
             parsed_url = urlparse(url_alternate2[0])
             query = parsed_url.query
             parsed_query = parse_qs(query)
+            print(f"url_alternate2: {url_alternate2}\n parsed_url.parsed_query {parsed_query}\n")
+            #parsed_query {'categoryId': ['14'], 'locationId': ['651110'], 'params[30]': ['109'], 'priceMax': ['6000'], 'priceMin': ['2000'], 'query': ['скутер']}
 
+############################################################################################################
+        url_alternate3 = result.get('path_url_alternate3', None)
+        if url_alternate3:
+            parsed_url = urlparse(url_alternate3[0])
+            query = parsed_url.query
+            parsed_query = parse_qs(query)
             # print(
             #     f'    parse_slug: \nScheme: {scheme},  Netloc: {netloc}, Path: {path}, Path parts: {path_parts}, Params: {params}'
             #     f'Query: {query}, Parsed Query: {parsed_query}, Fragment: {fragment}\n')
-            print(f"url_alternate2: {url_alternate2}\n parsed_url.parsed_query {parsed_query}")
-
-
-
-        url_alternate3 = result.get('path_url_alternate3', None)
-        print(f'\nurl_alternate3========={url_alternate3}')
-        if url_alternate3:
-            print(f"url_alternate3: {url_alternate3}")
-            ParsQuer = self.parse_slug(url_alternate3)  #
-            print(ParsQuer)
+            print(f"url_alternate3: {url_alternate3}\n parsed_url.parsed_query {parsed_query}\n")
+            #parsed_query {'categoryId': ['14'], 'locationId': ['651110'], 'params[30]': ['109'], 'priceMax': ['6000'], 'priceMin': ['2000'], 'query': ['скутер']}
 
     def get_url(self, url):
         self.url_0 = url
