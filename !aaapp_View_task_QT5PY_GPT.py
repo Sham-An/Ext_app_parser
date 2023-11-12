@@ -47,7 +47,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_TaskEDIT):  # Ui_MainWindow):
         selection_model = self.View_Task.selectionModel()
         selection_model.currentChanged.connect(self.on_selection_change)
         self.load_table_from_file("table_data.txt")
-        #self.get_task()
+        self.get_task()
 
     def check_task(self):
         # Выполняем запрос к базе данных

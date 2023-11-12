@@ -1,14 +1,36 @@
 import httpx
+import psycopg2
 from lxml import html
 from urllib.parse import urlparse, parse_qs
 from config import get_ssl_context, xpath_mapping, CIPHERS, avito_key, name_column_1, name_column_2, url_get, url_get1, \
     url_get2, url_get3
+from config_PySide import params
+import pickle
 
 class AvitoScraperHead:
     def __init__(self):
         self.ssl_context = get_ssl_context()
         self.key = avito_key
         self.ssl_context.set_ciphers(CIPHERS)
+        # Настраиваем соединение с базой данных
+        self.conn = psycopg2.connect(**params)
+        self.cursor = self.conn.cursor()
+
+    def get_table_data(self):
+        table_data_set = []
+        for row in range(self.model.rowCount()):
+            row_data = []
+            for column in range(self.model.columnCount()):
+                cell_data = self.model.data(self.model.index(row, column))
+                cell_text = str(cell_data) if cell_data is not None else ""
+                row_data.append(cell_text)
+            table_data_set.append(row_data)
+        return table_data_set
+
+    def save_table_to_file(self, file_name):
+        table_data = {"column_names": self.get_column_names(), "data": self.get_table_data()}
+        with open(file_name, "wb") as file:
+            pickle.dump(table_data, file)
 
     def get_attr_dict(self):
         return {name: None for name in name_column_1}
@@ -95,6 +117,8 @@ class AvitoScraperHead:
             #     f'Query: {query}, Parsed Query: {parsed_query}, Fragment: {fragment}\n')
             print(f"url_alternate3: {url_alternate3}\n parsed_url.parsed_query {parsed_query}\n")
             #parsed_query {'categoryId': ['14'], 'locationId': ['651110'], 'params[30]': ['109'], 'priceMax': ['6000'], 'priceMin': ['2000'], 'query': ['скутер']}
+
+        #self.save_table_to_file('test')
 
     def get_url(self, url):
         self.url_0 = url
