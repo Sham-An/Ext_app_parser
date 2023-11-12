@@ -15,7 +15,8 @@ import psycopg2
 from config_PySide import params
 from urllib.parse import urlparse, parse_qs
 from pandas import DataFrame
-import Lib.app_get_headers as head_get
+import Lib.aapp_get_headers as head_get
+import Lib.aapp_get_headers as head2
 
 url_str2 = "ru.avito://1/searchSubscription/new/byParams?description=%D0%9C%D0%BE%D1%82%D0%BE%D1%86%D0%B8%D0%BA%D0%BB%D1%8B+%D0%B8+%D0%BC%D0%BE%D1%82%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%2C+%D0%9D%D0%BE%D0%B2%D0%BE%D1%81%D0%B8%D0%B1%D0%B8%D1%80%D1%81%D0%BA%2C+%D0%9E%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C+%D0%BD%D0%B0+%D0%BA%D0%B0%D1%80%D1%82%D0%B5%2C+suzuki%2Bgsx-r%2C+%D0%9C%D0%BE%D1%82%D0%BE%D1%86%D0%B8%D0%BA%D0%BB%D1%8B%2C+%D0%91%2F%D1%83%2C+%D0%A2%D0%BE%D0%BB%D1%8C%D0%BA%D0%BE+%D1%81+%D1%84%D0%BE%D1%82%D0%BE%2C+%D0%A6%D0%B5%D0%BD%D0%B0+100%C2%A0000%C2%A0%E2%80%94%C2%A0200%C2%A0000%C2%A0%E2%82%BD&filter%5BcategoryId%5D=14&filter%5BlocationId%5D=641780&filter%5Bparams%5D%5B110275%5D=426645&filter%5Bparams%5D%5B30%5D=4969&filter%5BpriceMax%5D=200000&filter%5BpriceMin%5D=100000&filter%5Bquery%5D=suzuki%2Bgsx-r&filter%5BsearchRadius%5D=200&filter%5BwithImagesOnly%5D=1&pushFrequency=3&pushFrequencyOptions%5B0%5D%5Bid%5D=1&pushFrequencyOptions%5B0%5D%5Btitle%5D=%D0%A1%D1%80%D0%B0%D0%B7%D1%83&pushFrequencyOptions%5B1%5D%5Bid%5D=2&pushFrequencyOptions%5B1%5D%5Btitle%5D=%D0%A3%D1%82%D1%80%D0%BE%D0%BC&pushFrequencyOptions%5B2%5D%5Bid%5D=3&pushFrequencyOptions%5B2%5D%5Btitle%5D=%D0%92%D0%B5%D1%87%D0%B5%D1%80%D0%BE%D0%BC&pushFrequencyOptions%5B3%5D%5Bid%5D=0&pushFrequencyOptions%5B3%5D%5Btitle%5D=%D0%9D%D0%B5+%D0%BF%D1%80%D0%B8%D1%81%D1%8B%D0%BB%D0%B0%D1%82%D1%8C&title=%D0%9F%D0%BE%D0%B4%D0%BF%D0%B8%D1%81%D0%BA%D0%B0+%D0%BD%D0%B0+%D0%BF%D0%BE%D0%B8%D1%81%D0%BA"
 
@@ -41,7 +42,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_TaskEDIT):  # Ui_MainWindow):
         self.model = QStandardItemModel(self.View_Task)  # tableView)
         self.View_Task.setModel(self.model)
         # self.tableView.setModel(self.model)
-
+        self.head_list2 = head2.AvitoScraperHead()
         # Привязка обработчика событий на смену строки в таблице
         selection_model = self.View_Task.selectionModel()
         selection_model.currentChanged.connect(self.on_selection_change)
@@ -129,6 +130,9 @@ class MainWindow(QtWidgets.QMainWindow, Ui_TaskEDIT):  # Ui_MainWindow):
             # print('2 url new')
 
             url = current.sibling(current.row(), column).data()
+            print(f'url ===== {url}')
+            #head_list2 = head2.AvitoScraperHead()
+            self.head_list2.get_url(url)
             if isinstance(url, QUrl):
                 url_str = url.toUrl()
             else:
@@ -149,27 +153,18 @@ class MainWindow(QtWidgets.QMainWindow, Ui_TaskEDIT):  # Ui_MainWindow):
             View_text += str(f'split_path = {split_path}\n')
             # head_tail = os.path.split(url_parse)
             # self.Path_local.setText(split_path[1])
-            if len(split_path) == 2:
-                self.Path_local.setText(split_path[1])
-                View_text += str(f'Path_local = {split_path[1]}\n')
-                # self.Path_cat1.setText(split_path[2])
-                # self.Path_local.setText(split_path[1])
-                # print(split_path[1],'22222222222222222222222222222222')
-            elif len(split_path) == 3:
-                self.Path_local.setText(split_path[1])
-                self.Path_cat1.setText(split_path[2])
-                View_text += str(f'Path_local = {split_path[1]}\n'
-                                 f'Path_cat1 = {split_path[2]}\n')
-                # self.Path_cat2.setText(split_path[3])
-                # print('33333333333333333333333333333333')
-            elif len(split_path) > 3:
-                self.Path_local.setText(split_path[1])
-                self.Path_cat1.setText(split_path[2])
-                self.Path_cat2.setText(split_path[3])
-                View_text += str(f'Path_local = {split_path[1]}\n'
-                                 f'Path_cat1 = {split_path[2]}\n'
-                                 f'Path_cat2 = {split_path[3]}\n')
+            # Заполняем поля парсинга пути из URL
+            #     self.Path_local.setText(split_path[1])
+            #     self.Path_cat1.setText(split_path[2])
+            #     self.Path_cat2.setText(split_path[3])
+            #     View_text += str(f'Path_local = {split_path[1]}\n'
 
+            # Создайте список всех виджетов Path_*
+            path_widgets = [self.Path_local, self.Path_cat1, self.Path_cat2]
+
+            for i, split_path_part in enumerate(split_path[1:]):
+                path_widgets[i].setText(split_path_part)
+                View_text += f'Path_{i + 1} = {split_path_part}\n'
                 # print('4444444444444444444444444444444444')
             # self.Path_cat1.setText(split_path[2])
             # self.Path_cat2.setText(split_path[3])

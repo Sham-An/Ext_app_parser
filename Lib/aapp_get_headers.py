@@ -2,7 +2,8 @@
 import httpx
 from lxml import html
 from urllib.parse import urlparse, parse_qs
-from config import get_ssl_context, xpath_mapping, CIPHERS, avito_key, name_column_1, name_column_2
+from config import get_ssl_context, xpath_mapping, CIPHERS, avito_key, name_column_1, name_column_2, url_get, url_get1, \
+    url_get2, url_get3
 
 
 class AvitoScraperHead:
@@ -12,8 +13,6 @@ class AvitoScraperHead:
         self.key = avito_key  # 'af0deccbgcgidddjgnvljitntccdduijhdinfgjgfjir'
         self.ssl_context.set_ciphers(CIPHERS)
         ############################################
-        self.url_0 = 'https://www.avito.ru/rostovskaya_oblast/mototsikly_i_mototehnika?cd=1&q=скутер&f=ASgCAgECAUXGmgwXeyJmcm9tIjoyMDAwLCJ0byI6NzAwMH0'
-        self.url = self.url_0
 
     def get_attr_dict(self):
         my_dict = {name: None for name in name_column_1}
@@ -34,60 +33,69 @@ class AvitoScraperHead:
         fragment = parsed_url.fragment
         parsed_query = parse_qs(query)
 
-        print("Scheme:", scheme)
-        print("Netloc:", netloc)
-        print("Path:", path)
-        print("Path parts:", path_parts)
-        print("Params:", params)
-        print("Query:", query)
-        print("Parsed Query:", parsed_query)
-        print("Fragment:", fragment)
-
-        dict_attr = self.get_attr_dict()
-        dict_head_attr = self.get_head_attr_dict()
-        print('dict_attr', dict_attr)
-        print('dict_head_attr', dict_head_attr)
+        print(
+            f'    parse_slug: \nScheme: {scheme},  Netloc: {netloc}, Path: {path}, Path parts: {path_parts}, Params: {params}'
+            f'Query: {query}, Parsed Query: {parsed_query}, Fragment: {fragment}\n')
+        return parsed_query
+        # dict_attr = self.get_attr_dict()
+        # dict_head_attr = self.get_head_attr_dict()
+        # print('dict_attr', dict_attr)
+        # print('dict_head_attr', dict_head_attr)
 
     def parse_xml(self, resp_text):
-
         html_txt = resp_text
-        print('def parse_xml')
-        print(html_txt[:1000])
-
         tree = html.fromstring(html_txt)
         result = {}
-        #
-        # for key, xpath in xpath_mapping.items():
-        #     result = tree.xpath(xpath)
-        #     print(f"{key}: {result}")
 
         for key, xpath in xpath_mapping.items():
             value = tree.xpath(xpath)
             result[key] = value
+            print(key, "=====", result[key])
 
         url_canonical = result.get('path_url_canonical', None)
         print(url_canonical)
         if url_canonical:
-            print(f"url_canonical: {url_canonical}")
-            self.parse_slug(url_canonical)
+            # self.parse_slug(url_canonical)
+            parsed_url = urlparse(url_canonical[0])
+            print(f"\n \nurl_canonical: {url_canonical}\n parsed_url path.split {parsed_url.path.split('/')}")
+        # dict_head_attr
+        # {'id': None, 'title': None, 'url_canonical': None, 'url_alternate1': None, 'url_alternate2': None,
+        #  'status': None, 'category_kod': None, 'city_kod': None, 'reg_kod': None, 'search_filter': None,
+        #  'search_key': None, 'search_memo': None, 'search_parametrs_api': None, 'search_parametrs_web': None,
+        #  'slug_category': None, 'slug_city': None, 'slug_reg': None, 'priceMax': None, 'priceMin': None}
 
         url_alternate1 = result.get('path_url_alternate1', None)
-        print(f'\nurl_alternate1========={url_alternate1}')
+        #print(f'\nurl_alternate1========={url_alternate1}')
         if url_alternate1:
-            print(f"url_alternate1: {url_alternate1}")
-            self.parse_slug(url_alternate1)
+            #print(f"url_alternate1: {url_alternate1}")
+            #self.parse_slug(url_alternate1)
+            parsed_url = urlparse(url_alternate1[0])
+            print(f"url_alternate1: {url_alternate1}\n parsed_url path.split {parsed_url.path.split('/')}")
+
 
         url_alternate2 = result.get('path_url_alternate2', None)
         print(f'\nurl_alternate2========={url_alternate2}')
+
         if url_alternate2:
-            print(f"url_alternate2: {url_alternate2}")
+            #print(f"url_alternate2: {url_alternate2}")
             self.parse_slug(url_alternate2)
+            parsed_url = urlparse(url_alternate2[0])
+            query = parsed_url.query
+            parsed_query = parse_qs(query)
+
+            # print(
+            #     f'    parse_slug: \nScheme: {scheme},  Netloc: {netloc}, Path: {path}, Path parts: {path_parts}, Params: {params}'
+            #     f'Query: {query}, Parsed Query: {parsed_query}, Fragment: {fragment}\n')
+            print(f"url_alternate2: {url_alternate2}\n parsed_url.parsed_query {parsed_query}")
+
+
 
         url_alternate3 = result.get('path_url_alternate3', None)
         print(f'\nurl_alternate3========={url_alternate3}')
         if url_alternate3:
             print(f"url_alternate3: {url_alternate3}")
-            self.parse_slug(url_alternate3)
+            ParsQuer = self.parse_slug(url_alternate3)  #
+            print(ParsQuer)
 
     def get_url(self, url):
         self.url_0 = url
@@ -97,11 +105,12 @@ class AvitoScraperHead:
 
 if __name__ == '__main__':
     head_list = AvitoScraperHead()
-    url_get = "https://www.avito.ru/all?cd=1&d=1&f=ASgCAgECAUXGmgwXeyJmcm9tIjoxMDAwLCJ0byI6ODAwMH0&q=e-mu+1616&s=1"  # 'locationId': ['621540']
-    url_get2 = 'https://www.avito.ru/rostovskaya_oblast?cd=1&d=1&f=ASgCAgECAUXGmgwXeyJmcm9tIjoxMDAwLCJ0byI6ODAwMH0&q=e-mu+1616&s=1'  # 'locationId': ['651110']
-    url_get3 = 'https://www.avito.ru/rostovskaya_oblast_aksay/bytovaya_elektronika?cd=1&d=1&q=e-mu+1212&s=1'  # 'locationId': ['651130']
     head_list.get_url(url_get3)  # parse_xml()
-    # start_main()
+    # From config.py
+    # url_get = "https://www.avito.ru/all?cd=1&d=1&f=ASgCAgECAUXGmgwXeyJmcm9tIjoxMDAwLCJ0byI6ODAwMH0&q=e-mu+1616&s=1"  # 'locationId': ['621540']
+    # url_get2 = 'https://www.avito.ru/rostovskaya_oblast?cd=1&d=1&f=ASgCAgECAUXGmgwXeyJmcm9tIjoxMDAwLCJ0byI6ODAwMH0&q=e-mu+1616&s=1'  # 'locationId': ['651110']
+    # url_get3 = 'https://www.avito.ru/rostovskaya_oblast_aksay/bytovaya_elektronika?cd=1&d=1&q=e-mu+1212&s=1'  # 'locationId': ['651130']
+
 ################################################################################################
 '''
 def start_main():
