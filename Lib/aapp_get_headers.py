@@ -73,32 +73,32 @@ class AvitoScraperHead:
 
         if url_canonical:
             parsed_url = urlparse(url_canonical[0])
-            path_split = parsed_url.path.split("/")
-            print(f'  !!!!!!!!!!!!!!!!!!!!!!!!!!   path_split  \n {path_split}')
-            print(f"\n \nurl_canonical: {url_canonical}\n parsed_url path.split {path_split[1]}\n")
+            self.path_split = parsed_url.path.split("/")
+            #print(f'  !!!!!!!!!!!!!!!!!!!!!!!!!!   path_split  \n {path_split}')
+            print(f"\n \nurl_canonical: {url_canonical}\n parsed_url path.split {self.path_split[1]}\n")
 
             path_keys = ["Blank", "slug_city", "slug_category1", "slug_category2", "slug_category3", "slug_category4"]
             # path_result = {}
 
             for i, key in enumerate(path_keys):
-                if 1 <= i < len(path_split):  # if 1 <= i < len(path_split):
-                    path_result[key] = path_split[i]
+                if 1 <= i < len(self.path_split):  # if 1 <= i < len(path_split):
+                    path_result[key] = self.path_split[i]
 
             print(f"+++++++++++++++++++++++ path_result = \n {path_result}")
 
         url_alternate1 = result.get('path_url_alternate1', None)
         if url_alternate1:
             parsed_url = urlparse(url_alternate1[0])
-            path_split1 = parsed_url.path.split("/")
-            print(f"url_alternate1: {url_alternate1}\n parsed_url path.split {path_split1}\n")
+            self.path_split1 = parsed_url.path.split("/")
+            print(f"url_alternate1: {url_alternate1}\n parsed_url path.split {self.path_split1}\n")
             # path.split ['', 'rostovskaya_oblast', 'mototsikly_i_mototehnika', 'mopedy_i_skutery-ASgBAgICAUQ82gE']
 
         url_alternate2 = result.get('path_url_alternate2', None)
         if url_alternate2:
             parsed_url = urlparse(url_alternate2[0])
             query = parsed_url.query
-            parsed_query2 = parse_qs(query)
-            print(f"url_alternate2: {url_alternate2}\n parsed_url.parsed_query {parsed_query2}\n")
+            self.parsed_query2 = parse_qs(query)
+            print(f"url_alternate2: {url_alternate2}\n parsed_url.parsed_query {self.parsed_query2}\n")
             # parsed_query {'categoryId': ['14'], 'locationId': ['651110'], 'params[30]': ['109'], 'priceMax': ['6000'], 'priceMin': ['2000'], 'query': ['скутер']}
 
         ############################################################################################################
