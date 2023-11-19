@@ -7,6 +7,7 @@ from config import get_ssl_context, xpath_mapping, CIPHERS, avito_key, name_colu
 from config_PySide import params
 import pickle
 
+
 class AvitoScraperHead:
     def __init__(self):
         self.ssl_context = get_ssl_context()
@@ -15,6 +16,11 @@ class AvitoScraperHead:
         # Настраиваем соединение с базой данных
         self.conn = psycopg2.connect(**params)
         self.cursor = self.conn.cursor()
+        self.path_split = None
+        self.path_split1 = None
+        self.parsed_query2 = None
+        self.parsed_query3 = None
+
 
     def get_table_data(self):
         table_data_set = []
@@ -42,8 +48,9 @@ class AvitoScraperHead:
         parsed_url = urlparse(url_parse[0])
         path_parts = parsed_url.path.split("/")
         parsed_query = parse_qs(parsed_url.query)
-        print(f'    parse_slug: \nScheme: {parsed_url.scheme},  Netloc: {parsed_url.netloc}, Path: {parsed_url.path}, Path parts: {path_parts}, Params: {parsed_url.params}'
-              f'Query: {parsed_url.query}, Parsed Query: {parsed_query}, Fragment: {parsed_url.fragment}\n')
+        print(
+            f'    parse_slug: \nScheme: {parsed_url.scheme},  Netloc: {parsed_url.netloc}, Path: {parsed_url.path}, Path parts: {path_parts}, Params: {parsed_url.params}'
+            f'Query: {parsed_url.query}, Parsed Query: {parsed_query}, Fragment: {parsed_url.fragment}\n')
         return parsed_query
 
     def parse_xml(self, resp_text):
@@ -60,8 +67,8 @@ class AvitoScraperHead:
             result[key] = tree.xpath(xpath)
             print(key, "=====", result[key])
 
-        #path_split = ['', 'rostovskaya_oblast', 'mototsikly_i_mototehnika']
-        #path_split = ['', 'rostovskaya_oblast', 'mototsikly_i_mototehnika', 'mopedy_i_skutery-ASgBAgICAUQ82gE']
+        # path_split = ['', 'rostovskaya_oblast', 'mototsikly_i_mototehnika']
+        # path_split = ['', 'rostovskaya_oblast', 'mototsikly_i_mototehnika', 'mopedy_i_skutery-ASgBAgICAUQ82gE']
         url_canonical = result.get("path_url_canonical", None)
 
         if url_canonical:
@@ -71,59 +78,54 @@ class AvitoScraperHead:
             print(f"\n \nurl_canonical: {url_canonical}\n parsed_url path.split {path_split[1]}\n")
 
             path_keys = ["Blank", "slug_city", "slug_category1", "slug_category2", "slug_category3", "slug_category4"]
-            #path_result = {}
+            # path_result = {}
 
             for i, key in enumerate(path_keys):
-                if 1 <= i < len(path_split): #if 1 <= i < len(path_split):
+                if 1 <= i < len(path_split):  # if 1 <= i < len(path_split):
                     path_result[key] = path_split[i]
 
             print(f"+++++++++++++++++++++++ path_result = \n {path_result}")
 
-        # path_split = ['', 'rostovskaya_oblast', 'mototsikly_i_mototehnika', 'mopedy_i_skutery-ASgBAgICAUQ82gE']
-        # url_canonical = result.get('path_url_canonical', None)
-        # if url_canonical:
-        #     parsed_url = urlparse(url_canonical[0])
-        #     path_split2 = parsed_url.path.split('/')
-        #     print(path_split2)
-        #     print(f"\n \nurl_canonical: {url_canonical}\n parsed_url path.split {path_split[1]}\n")
-        #     #path.split ['', 'rostovskaya_oblast', 'mototsikly_i_mototehnika', 'mopedy_i_skutery-ASgBAgICAUQ82gE']
-        #     path_result['slug_city'] = path_split[1]
-        #     path_result['slug_category1'] = path_split[2]
-        #     path_result['slug_category2'] = path_split[3]
-        #     print(f'path_result = \n {path_result}')
-
         url_alternate1 = result.get('path_url_alternate1', None)
         if url_alternate1:
             parsed_url = urlparse(url_alternate1[0])
-            print(f"url_alternate1: {url_alternate1}\n parsed_url path.split {parsed_url.path.split('/')}\n")
-            #path.split ['', 'rostovskaya_oblast', 'mototsikly_i_mototehnika', 'mopedy_i_skutery-ASgBAgICAUQ82gE']
+            path_split1 = parsed_url.path.split("/")
+            print(f"url_alternate1: {url_alternate1}\n parsed_url path.split {path_split1}\n")
+            # path.split ['', 'rostovskaya_oblast', 'mototsikly_i_mototehnika', 'mopedy_i_skutery-ASgBAgICAUQ82gE']
 
         url_alternate2 = result.get('path_url_alternate2', None)
         if url_alternate2:
             parsed_url = urlparse(url_alternate2[0])
             query = parsed_url.query
-            parsed_query = parse_qs(query)
-            print(f"url_alternate2: {url_alternate2}\n parsed_url.parsed_query {parsed_query}\n")
-            #parsed_query {'categoryId': ['14'], 'locationId': ['651110'], 'params[30]': ['109'], 'priceMax': ['6000'], 'priceMin': ['2000'], 'query': ['скутер']}
+            parsed_query2 = parse_qs(query)
+            print(f"url_alternate2: {url_alternate2}\n parsed_url.parsed_query {parsed_query2}\n")
+            # parsed_query {'categoryId': ['14'], 'locationId': ['651110'], 'params[30]': ['109'], 'priceMax': ['6000'], 'priceMin': ['2000'], 'query': ['скутер']}
 
-############################################################################################################
+        ############################################################################################################
         url_alternate3 = result.get('path_url_alternate3', None)
         if url_alternate3:
             parsed_url = urlparse(url_alternate3[0])
             query = parsed_url.query
-            parsed_query = parse_qs(query)
+            self.parsed_query3 = parse_qs(query)
             # print(
             #     f'    parse_slug: \nScheme: {scheme},  Netloc: {netloc}, Path: {path}, Path parts: {path_parts}, Params: {params}'
             #     f'Query: {query}, Parsed Query: {parsed_query}, Fragment: {fragment}\n')
-            print(f"url_alternate3: {url_alternate3}\n parsed_url.parsed_query {parsed_query}\n")
-            #parsed_query {'categoryId': ['14'], 'locationId': ['651110'], 'params[30]': ['109'], 'priceMax': ['6000'], 'priceMin': ['2000'], 'query': ['скутер']}
+            print(f"url_alternate3: {url_alternate3}\n parsed_url.parsed_query {self.parsed_query3}\n")
+            # parsed_query {'categoryId': ['14'], 'locationId': ['651110'], 'params[30]': ['109'], 'priceMax': ['6000'], 'priceMin': ['2000'], 'query': ['скутер']}
 
-        #self.save_table_to_file('test')
+        # self.save_table_to_file('test')
+        # print(f'RETURN path_split {path_split}')
+        # print(f'RETURN path_split1 {path_split1}')
+        # print(f'RETURN parsed_query2 {parsed_query2}')
+        print(f'RETURN self.parsed_query3 {self.parsed_query3}')
+        #return path_split, path_split1, parsed_query2, parsed_query3
 
     def get_url(self, url):
         self.url_0 = url
         response = httpx.get(url, verify=self.ssl_context)
         self.parse_xml(response.text)
+        print(f'self.path_split')
+        return self.path_split, self.path_split1, self.parsed_query2, self.parsed_query3
 
 
 if __name__ == '__main__':
@@ -332,3 +334,16 @@ def parse_xml_1(resp_text):
 # print(f'uri  {uri}')
 # uri_mweb = val['uri_mweb']
 # print(f'uri_mweb  {uri_mweb}')
+
+# path_split = ['', 'rostovskaya_oblast', 'mototsikly_i_mototehnika', 'mopedy_i_skutery-ASgBAgICAUQ82gE']
+# url_canonical = result.get('path_url_canonical', None)
+# if url_canonical:
+#     parsed_url = urlparse(url_canonical[0])
+#     path_split2 = parsed_url.path.split('/')
+#     print(path_split2)
+#     print(f"\n \nurl_canonical: {url_canonical}\n parsed_url path.split {path_split[1]}\n")
+#     #path.split ['', 'rostovskaya_oblast', 'mototsikly_i_mototehnika', 'mopedy_i_skutery-ASgBAgICAUQ82gE']
+#     path_result['slug_city'] = path_split[1]
+#     path_result['slug_category1'] = path_split[2]
+#     path_result['slug_category2'] = path_split[3]
+#     print(f'path_result = \n {path_result}')
