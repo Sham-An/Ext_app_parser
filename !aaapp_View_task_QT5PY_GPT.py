@@ -158,7 +158,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_TaskEDIT):  # Ui_MainWindow):
             print("parsed_url ", len(split_path), " @@@@@@", split_path)
             View_text += str(f'split_path = {split_path}\n')
             View_text += str(f'path_split = {path_split}\n')
-            View_text += str(f'parsed_query3 = {parsed_query3}\n')
+            View_text += str(f'parsed_query3 "categoryId" = {parsed_query3["categoryId"][0]}\n')
             # head_tail = os.path.split(url_parse)
             # self.Path_local.setText(split_path[1])
             # Заполняем поля парсинга пути из URL
