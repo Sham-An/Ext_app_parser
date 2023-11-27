@@ -21,6 +21,7 @@ class AvitoScraperHead:
         self.parsed_query2 = None
         self.parsed_query3 = None
 
+
     def get_table_data(self):
         table_data_set = []
         for row in range(self.model.rowCount()):
@@ -66,12 +67,16 @@ class AvitoScraperHead:
             result[key] = tree.xpath(xpath)
             print(key, "=====", result[key])
 
+        # path_split = ['', 'rostovskaya_oblast', 'mototsikly_i_mototehnika']
+        # path_split = ['', 'rostovskaya_oblast', 'mototsikly_i_mototehnika', 'mopedy_i_skutery-ASgBAgICAUQ82gE']
         url_canonical = result.get("path_url_canonical", None)
 
         if url_canonical:
             parsed_url = urlparse(url_canonical[0])
             self.path_split = parsed_url.path.split("/")
+            #print(f'  !!!!!!!!!!!!!!!!!!!!!!!!!!   path_split  \n {path_split}')
             print(f"\n \nurl_canonical: {url_canonical}\n parsed_url path.split {self.path_split[1]}\n")
+
             path_keys = ["Blank", "slug_city", "slug_category1", "slug_category2", "slug_category3", "slug_category4"]
             # path_result = {}
 
@@ -86,6 +91,7 @@ class AvitoScraperHead:
             parsed_url = urlparse(url_alternate1[0])
             self.path_split1 = parsed_url.path.split("/")
             print(f"url_alternate1: {url_alternate1}\n parsed_url path.split {self.path_split1}\n")
+            # path.split ['', 'rostovskaya_oblast', 'mototsikly_i_mototehnika', 'mopedy_i_skutery-ASgBAgICAUQ82gE']
 
         url_alternate2 = result.get('path_url_alternate2', None)
         if url_alternate2:
@@ -93,13 +99,26 @@ class AvitoScraperHead:
             query = parsed_url.query
             self.parsed_query2 = parse_qs(query)
             print(f"url_alternate2: {url_alternate2}\n parsed_url.parsed_query {self.parsed_query2}\n")
+            # parsed_query {'categoryId': ['14'], 'locationId': ['651110'], 'params[30]': ['109'], 'priceMax': ['6000'], 'priceMin': ['2000'], 'query': ['скутер']}
+
+        ############################################################################################################
         url_alternate3 = result.get('path_url_alternate3', None)
         if url_alternate3:
             parsed_url = urlparse(url_alternate3[0])
             query = parsed_url.query
             self.parsed_query3 = parse_qs(query)
+            # print(
+            #     f'    parse_slug: \nScheme: {scheme},  Netloc: {netloc}, Path: {path}, Path parts: {path_parts}, Params: {params}'
+            #     f'Query: {query}, Parsed Query: {parsed_query}, Fragment: {fragment}\n')
             print(f"url_alternate3: {url_alternate3}\n parsed_url.parsed_query {self.parsed_query3}\n")
+            # parsed_query {'categoryId': ['14'], 'locationId': ['651110'], 'params[30]': ['109'], 'priceMax': ['6000'], 'priceMin': ['2000'], 'query': ['скутер']}
+
+        # self.save_table_to_file('test')
+        # print(f'RETURN path_split {path_split}')
+        # print(f'RETURN path_split1 {path_split1}')
+        # print(f'RETURN parsed_query2 {parsed_query2}')
         print(f'RETURN self.parsed_query3 {self.parsed_query3}')
+        #return path_split, path_split1, parsed_query2, parsed_query3
 
     def get_url(self, url):
         self.url_0 = url
@@ -112,9 +131,6 @@ class AvitoScraperHead:
 if __name__ == '__main__':
     head_list = AvitoScraperHead()
     head_list.get_url(url_get3)  # parse_xml()
-
-#############################################
-##############################################
     # From config.py
     # url_get = "https://www.avito.ru/all?cd=1&d=1&f=ASgCAgECAUXGmgwXeyJmcm9tIjoxMDAwLCJ0byI6ODAwMH0&q=e-mu+1616&s=1"  # 'locationId': ['621540']
     # url_get2 = 'https://www.avito.ru/rostovskaya_oblast?cd=1&d=1&f=ASgCAgECAUXGmgwXeyJmcm9tIjoxMDAwLCJ0byI6ODAwMH0&q=e-mu+1616&s=1'  # 'locationId': ['651110']

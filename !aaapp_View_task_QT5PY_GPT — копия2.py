@@ -15,13 +15,8 @@ import psycopg2
 from config_PySide import params
 from urllib.parse import urlparse, parse_qs
 from pandas import DataFrame
-import Lib.aapp_get_headers as head_get
-import Lib.aapp_get_headers as head2
 
 url_str2 = "ru.avito://1/searchSubscription/new/byParams?description=%D0%9C%D0%BE%D1%82%D0%BE%D1%86%D0%B8%D0%BA%D0%BB%D1%8B+%D0%B8+%D0%BC%D0%BE%D1%82%D0%BE%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0%2C+%D0%9D%D0%BE%D0%B2%D0%BE%D1%81%D0%B8%D0%B1%D0%B8%D1%80%D1%81%D0%BA%2C+%D0%9E%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C+%D0%BD%D0%B0+%D0%BA%D0%B0%D1%80%D1%82%D0%B5%2C+suzuki%2Bgsx-r%2C+%D0%9C%D0%BE%D1%82%D0%BE%D1%86%D0%B8%D0%BA%D0%BB%D1%8B%2C+%D0%91%2F%D1%83%2C+%D0%A2%D0%BE%D0%BB%D1%8C%D0%BA%D0%BE+%D1%81+%D1%84%D0%BE%D1%82%D0%BE%2C+%D0%A6%D0%B5%D0%BD%D0%B0+100%C2%A0000%C2%A0%E2%80%94%C2%A0200%C2%A0000%C2%A0%E2%82%BD&filter%5BcategoryId%5D=14&filter%5BlocationId%5D=641780&filter%5Bparams%5D%5B110275%5D=426645&filter%5Bparams%5D%5B30%5D=4969&filter%5BpriceMax%5D=200000&filter%5BpriceMin%5D=100000&filter%5Bquery%5D=suzuki%2Bgsx-r&filter%5BsearchRadius%5D=200&filter%5BwithImagesOnly%5D=1&pushFrequency=3&pushFrequencyOptions%5B0%5D%5Bid%5D=1&pushFrequencyOptions%5B0%5D%5Btitle%5D=%D0%A1%D1%80%D0%B0%D0%B7%D1%83&pushFrequencyOptions%5B1%5D%5Bid%5D=2&pushFrequencyOptions%5B1%5D%5Btitle%5D=%D0%A3%D1%82%D1%80%D0%BE%D0%BC&pushFrequencyOptions%5B2%5D%5Bid%5D=3&pushFrequencyOptions%5B2%5D%5Btitle%5D=%D0%92%D0%B5%D1%87%D0%B5%D1%80%D0%BE%D0%BC&pushFrequencyOptions%5B3%5D%5Bid%5D=0&pushFrequencyOptions%5B3%5D%5Btitle%5D=%D0%9D%D0%B5+%D0%BF%D1%80%D0%B8%D1%81%D1%8B%D0%BB%D0%B0%D1%82%D1%8C&title=%D0%9F%D0%BE%D0%B4%D0%BF%D0%B8%D1%81%D0%BA%D0%B0+%D0%BD%D0%B0+%D0%BF%D0%BE%D0%B8%D1%81%D0%BA"
-
-class Parts_union():
-    pass
 
 class MainWindow(QtWidgets.QMainWindow, Ui_TaskEDIT):  # Ui_MainWindow):
     def __init__(self):
@@ -42,59 +37,35 @@ class MainWindow(QtWidgets.QMainWindow, Ui_TaskEDIT):  # Ui_MainWindow):
         self.model = QStandardItemModel(self.View_Task)  # tableView)
         self.View_Task.setModel(self.model)
         # self.tableView.setModel(self.model)
-        self.head_list2 = head2.AvitoScraperHead()
+
         # Привязка обработчика событий на смену строки в таблице
         selection_model = self.View_Task.selectionModel()
         selection_model.currentChanged.connect(self.on_selection_change)
         #self.load_table_from_file("table_data.txt")
         self.get_task()
 
-    def check_task(self):
-        # Выполняем запрос к базе данных
-        query_all_task = "SELECT * FROM aparser_task"
-        self.cursor.execute(query_all_task)
-        # Получаем данные и имена столбцов и заполняем модель таблицы
-        rows = self.cursor.fetchall()
-        head_list = head_get.AvitoScraperHead()
-        for row in rows:
-            print('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! check', row[2])
-            url2 = str(row[2])
-            head_list.get_url(url2)
-
     def save_table_to_file(self, file_name):
-        table_data = {"column_names": self.get_column_names(), "data": self.get_table_data()}
-        with open(file_name, "wb") as file:
-            pickle.dump(table_data, file)
+        with open(file_name, "w") as file:
+            for row in range(self.model.rowCount()):
+                row_data = []
+                for column in range(self.model.columnCount()):
+                    cell_data = self.model.data(self.model.index(row, column))
+                    cell_text = str(cell_data) if cell_data is not None else ""
+                    row_data.append(cell_text)
+                file.write(",".join(row_data) + "\n")
 
     def load_table_from_file(self, file_name):
-        with open(file_name, "rb") as file:
-            table_data = pickle.load(file)
-        column_names = table_data["column_names"]
-        table_data = table_data["data"]
-
         self.model.clear()
-        self.model.setColumnCount(len(column_names))
-        self.model.setHorizontalHeaderLabels(column_names)
-        for row in table_data:
-            self.model.appendRow([QStandardItem(data) for data in row])
-
-    def get_column_names(self):
-        column_names = []
-        for column in range(self.model.columnCount()):
-            column_name = self.model.headerData(column, QtCore.Qt.Horizontal)
-            column_names.append(column_name)
-        return column_names
-
-    def get_table_data(self):
-        table_data = []
-        for row in range(self.model.rowCount()):
-            row_data = []
-            for column in range(self.model.columnCount()):
-                cell_data = self.model.data(self.model.index(row, column))
-                cell_text = str(cell_data) if cell_data is not None else ""
-                row_data.append(cell_text)
-            table_data.append(row_data)
-        return table_data
+        with open(file_name, "r") as file:
+            for line in file:
+                row_data = line.strip().split(",")
+                row_count = self.model.rowCount()
+                self.model.insertRow(row_count)
+                column_count = min(len(row_data), self.model.columnCount())
+                for column in range(column_count):
+                    cell_text = row_data[column]
+                    item = QStandardItem(cell_text)
+                    self.model.setItem(row_count, column, item)
 
     def get_task(self):
         # Выполняем запрос к базе данных
@@ -130,72 +101,54 @@ class MainWindow(QtWidgets.QMainWindow, Ui_TaskEDIT):  # Ui_MainWindow):
             # print('2 url new')
 
             url = current.sibling(current.row(), column).data()
-            print(f'url ===== {url}')
-            #head_list2 = head2.AvitoScraperHead()
-            path_split, path_split1, parsed_query2, parsed_query3 = self.head_list2.get_url(url)
-            #self.head_list2.get_url(url)
-            print(f'path_split: {path_split}')
-            print(f'path_split1: {path_split1}')
-            print(f'parsed_query2: {parsed_query2}')
-            print(f'parsed_query3: {parsed_query3}')
-
             if isinstance(url, QUrl):
                 url_str = url.toUrl()
             else:
                 url_str = str(url)
             parsed_url = urlparse(url_str)
-
-            print('current.row()', current.row(), current.column())
+            #parsed_url = urlparse(url_str2)
 
             self.lineEdit.setText(url)
             self.Path_scheme.setText(parsed_url.scheme)
             self.Path_host.setText(parsed_url.netloc)
+            #url_parse = setText(parsed_url.path)
             self.Path_parts.setText(parsed_url.path)
             url_parse = self.Path_parts.text()
+            #print(url_parse)
             path_os = os.path.normpath(url_parse)
             split_path = path_os.split(os.sep)
-            View_text = str(f'url = {url}\n \n')
-            print("parsed_url ", len(split_path), " @@@@@@", split_path)
-            View_text += str(f'split_path = {split_path}\n')
+            print("parsed_url ", len(split_path) , " @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+            # print(len(split_path))
+            # print(split_path)
+            #head_tail = os.path.split(url_parse)
+            #self.Path_local.setText(split_path[1])
+            if len(split_path) == 2:
+                self.Path_local.setText(split_path[1])
+                #self.Path_cat1.setText(split_path[2])
+                #self.Path_local.setText(split_path[1])
+                #print(split_path[1],'22222222222222222222222222222222')
+            elif len(split_path) == 3:
+                self.Path_local.setText(split_path[1])
+                self.Path_cat1.setText(split_path[2])
+                #self.Path_cat2.setText(split_path[3])
+                #print('33333333333333333333333333333333')
+            elif len(split_path) > 3:
+                self.Path_local.setText(split_path[1])
+                self.Path_cat1.setText(split_path[2])
+                self.Path_cat2.setText(split_path[3])
+                #print('4444444444444444444444444444444444')
 
-            View_text += str(f'path_split = {path_split}\n')
-            ####          ERROR
-            #View_text += str(f'parsed_query3 "categoryId" = {parsed_query3["categoryId"][0]}\n')
-            try:
-                View_text += str(f'parsed_query3 "categoryId" = {parsed_query3["categoryId"][0]}\n')
-            except KeyError:
-                # Обработка исключения, если ключ "categoryId" отсутствует в parsed_query3
-                View_text += "Нет значения для ключа 'categoryId'\n"
 
-            # head_tail = os.path.split(url_parse)
-            # self.Path_local.setText(split_path[1])
-            # Заполняем поля парсинга пути из URL
-            #     self.Path_local.setText(split_path[1])
-            #     self.Path_cat1.setText(split_path[2])
-            #     self.Path_cat2.setText(split_path[3])
-            #     View_text += str(f'Path_local = {split_path[1]}\n'
-
-            # Создайте список всех виджетов Path_*
-            path_widgets = [self.Path_local, self.Path_cat1, self.Path_cat2]
-
-            for i, split_path_part in enumerate(split_path[1:]):
-                path_widgets[i].setText(split_path_part)
-                View_text += f'Path_{i + 1} = {split_path_part}\n'
-                # print('4444444444444444444444444444444444')
-            # self.Path_cat1.setText(split_path[2])
-            # self.Path_cat2.setText(split_path[3])
+            #self.Path_cat1.setText(split_path[2])
+            #self.Path_cat2.setText(split_path[3])
             self.list_Query.clear()
-            print(parsed_url) #print(parsed_url.query)
+            print('@@@@@@@@@@@parsed_url.query')
+            print(parsed_url.query)
             query_dict = parse_qs(parsed_url.query)
-            print(f'parsed_url.query = {parsed_url.query}') #print(query_dict)
-            #View_text= str(f'url = {url}')
+            print(query_dict)
             for param in query_dict:
                 self.list_Query.addItem("{}: {}".format(param, query_dict[param][0]))
-                self.Task_view_text.setText(View_text)
-                #self.Task_view_text.setText("TTTEXTTT") #(parsed_url.fragment)
-            #self.Task_view_text.setText(url)  # str(current.row()))#(parsed_url.fragment)
-
-
+                self.Task_view_text.setText("TTTEXTTT")#(parsed_url.fragment)
 
     def closeEvent(self, event):
         # Закрываем соединение с базой данных

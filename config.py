@@ -29,8 +29,8 @@ name_column_2 = [
 
 
 params = {
-    'host': '192.168.100.9',
-    #'host': '10.10.16.2',
+    #'host': '192.168.100.9',
+    'host': '10.10.16.2',
     'port': 5432,
     'dbname': 'main_avito_django_bot',
     'user': 'postgres',
