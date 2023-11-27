@@ -134,10 +134,10 @@ class MainWindow(QtWidgets.QMainWindow, Ui_TaskEDIT):  # Ui_MainWindow):
             #head_list2 = head2.AvitoScraperHead()
             path_split, path_split1, parsed_query2, parsed_query3 = self.head_list2.get_url(url)
             #self.head_list2.get_url(url)
-            print(f'path_split: {path_split}')
+            print(f'path_split: {path_split} ')
             print(f'path_split1: {path_split1}')
             print(f'parsed_query2: {parsed_query2}')
-            print(f'parsed_query3: {parsed_query3}')
+            print(f'!!!!!!!!!!!!!!!!!!!!!!!!!  parsed_query3: {parsed_query3}')
 
             if isinstance(url, QUrl):
                 url_str = url.toUrl()
@@ -152,20 +152,24 @@ class MainWindow(QtWidgets.QMainWindow, Ui_TaskEDIT):  # Ui_MainWindow):
             self.Path_host.setText(parsed_url.netloc)
             self.Path_parts.setText(parsed_url.path)
             url_parse = self.Path_parts.text()
-            path_os = os.path.normpath(url_parse)
-            split_path = path_os.split(os.sep)
+            path_os = os.path.normpath(url_parse) #когда вам нужно нормализовать путь к файлу или каталогу. Он устраняет избыточные слэши и другие аномалии пути, чтобы получить стандартизированный путь.
+            split_path = path_os.split(os.sep) #использовать этот подход, если вам нужно работать с каждым компонентом пути отдельно или анализировать структуру пути.
             View_text = str(f'url = {url}\n \n')
-            print("parsed_url ", len(split_path), " @@@@@@", split_path)
-            View_text += str(f'split_path = {split_path}\n')
+            print("parsed_url ", len(path_split), " @@@@@@", path_split)
+#            View_text += str(f'split_path = {split_path}\n')
 
             View_text += str(f'path_split = {path_split}\n')
             ####          ERROR
             #View_text += str(f'parsed_query3 "categoryId" = {parsed_query3["categoryId"][0]}\n')
             try:
                 View_text += str(f'parsed_query3 "categoryId" = {parsed_query3["categoryId"][0]}\n')
+                #parsed_query3 "categoryId" = 14
             except KeyError:
+                parsed_query3["categoryId"] = [0]
+                parsed_query3["categoryId"][0] = '0'
+                View_text += str(f'parsed_query3 "categoryId" = {parsed_query3["categoryId"][0]}\n')
                 # Обработка исключения, если ключ "categoryId" отсутствует в parsed_query3
-                View_text += "Нет значения для ключа 'categoryId'\n"
+                #View_text += "Нет значения для ключа 'categoryId'\n"
 
             # head_tail = os.path.split(url_parse)
             # self.Path_local.setText(split_path[1])
