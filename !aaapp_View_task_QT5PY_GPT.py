@@ -191,11 +191,17 @@ class MainWindow(QtWidgets.QMainWindow, Ui_TaskEDIT):  # Ui_MainWindow):
             self.list_Query.clear()
             print(parsed_url) #print(parsed_url.query)
             query_dict = parse_qs(parsed_url.query)
-            print(f'parsed_url.query = {parsed_url.query}') #print(query_dict)
+            print(f'parsed_url.query = {parsed_url.query} \n ') #print(query_dict)
             #View_text= str(f'url = {url}')
+            stlist =''
             for param in query_dict:
                 self.list_Query.addItem("{}: {}".format(param, query_dict[param][0]))
-                self.Task_view_text.setText(View_text)
+                stlist += "\n" + str(("{}: {}".format(param, query_dict[param][0])))
+
+            #print("Text value:", stlist)
+            print(stlist)
+            self.Task_view_text.setText(View_text)
+                #View_text +=
                 #self.Task_view_text.setText("TTTEXTTT") #(parsed_url.fragment)
             #self.Task_view_text.setText(url)  # str(current.row()))#(parsed_url.fragment)
 
