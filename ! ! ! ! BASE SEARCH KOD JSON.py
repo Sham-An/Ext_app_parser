@@ -2,20 +2,32 @@ import urllib.parse
 
 # Создаем базовый URL для поиска автомобилей на Avito
 base_url = 'https://www.avito.ru/js/catalog?'
-
+base_url3 = 'https://www.avito.ru/?'
 # Создаем словарь с параметрами запроса
-params = {
-    'categoryId': '9',
-    'locationId': '652000',
-    'params[price][from]': '500000',
-    'params[price][to]': '1000000'
-}
 
+# 'categoryId': '101',
+# 'categoryId': '',
+# 'locationId': '0',
+# 'locationId': '652000',
+
+params = {
+    'categoryId': '101',
+    'params[price][from]': '3000', #json
+    'params[price][to]': '8000', #json
+    #'priceMin': '3000', #HTML
+    #'priceMax': '8000', #HTML
+    'q': 'E-MU 1616'
+}
+#'query': 'E-MU 1616'
 # Кодируем параметры запроса и добавляем их к базовому URL
+if 'locationId' not in params:
+    base_url3 = 'https://www.avito.ru/all/?'
+    #base_url = 'https://www.avito.ru/js/catalog?'
+
 encoded_params = urllib.parse.urlencode(params)
 search_url = base_url + encoded_params
 
-print(search_url)
+print(search_url) #открываем в браузере полученый адрес
 
 '''
 
